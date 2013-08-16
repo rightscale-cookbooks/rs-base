@@ -79,7 +79,7 @@ Vagrant.configure("2") do |config|
       }
     }
     # The arguments passed to the chef-solo CLI
-    chef.arguments = "--logfile /var/log/chef-solo.log"
+    #chef.arguments = "--logfile /var/log/chef-solo.log"
 
     chef.run_list = [
         "recipe[rs-base::default]",
