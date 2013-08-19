@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-set['ntp']['servers'] = [
+default['rs-base']['ntp']['servers'] = [
   "time.rightscale.com",
   "ec2-us-east.time.rightscale.com",
   "ec2-us-west.time.rightscale.com"

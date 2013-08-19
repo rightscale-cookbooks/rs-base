@@ -17,4 +17,6 @@
 # limitations under the License.
 #
 
+override['ntp']['servers'] = node['rs-base']['ntp']['servers']
+
 include_recipe "ntp::default"
