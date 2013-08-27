@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rs-base
-# Recipe:: default
+# Recipe:: setup_swap
 #
 # Copyright (C) 2013 RightScale, Inc.
 # 
@@ -16,4 +16,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-include_recipe "rs-base::setup_swap"
+
+#TODO - add call to swap resource`
+
+swap_file node['rs-base']['swap']['location'] do
+  size node['rs-base']['swap']['size']
+end
+
