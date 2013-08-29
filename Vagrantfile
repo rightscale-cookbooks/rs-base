@@ -1,9 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant.configure("2") do |config|
-  # All Vagrant configuration is done here. The most common configuration
-  # options are documented and commented below. For a complete reference,
+Vagrant.configure("2") do |config| # All Vagrant configuration is done here. The most common configuration # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
   config.vm.hostname = "rs-base-berkshelf"
@@ -84,7 +82,7 @@ config.omnibus.chef_version = :latest
 
     chef.run_list = [
         "recipe[rs-base::default]",
-        "recipe[rs-base::setup_swap]"
+        "recipe[rs-base::create_swap]"
     ]
   end
 end

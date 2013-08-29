@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rs-base
-# Recipe:: setup_swap
+# Recipe:: remove_swap
 #
 # Copyright (C) 2013 RightScale, Inc.
 # 
@@ -17,9 +17,11 @@
 # limitations under the License.
 #
 
-#TODO - add call to swap resource`
+marker "recipe_start"
 
-swap_file node['rs-base']['swap']['location'] do
+swap_file node['rs-base']['swap']['file'] do
   size node['rs-base']['swap']['size']
+  action :remove
 end
-
+#TODO disable collectd swap plugin??  Was in old cookbook, but
+# do we want to that here or in a separate recipe?

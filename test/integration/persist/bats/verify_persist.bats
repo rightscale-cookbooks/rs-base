@@ -1,3 +1,5 @@
+#!/usr/bin/env bats
+
 @test "writes fstab" {
-  cat /etc/fstab | grep /mnt/swap
+  cat /etc/fstab | grep /mnt/ephemeral/swapfile
 }
