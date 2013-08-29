@@ -36,6 +36,7 @@ suites:
   attributes : {}
 
 - name: remove
-  run_list: ["rs-base::create_swap"]
-  run_list: ["rs-base::remove_swap"]
+  run_list: 
+  - recipe[rs-base::create_swap]
+  - recipe[rs-base::remove_swap]
   attributes : {}
