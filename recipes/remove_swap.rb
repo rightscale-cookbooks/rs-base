@@ -20,8 +20,6 @@
 marker "recipe_start"
 
 swap_file node['rs-base']['swap']['file'] do
-  size node['rs-base']['swap']['size']
   action :remove
 end
-#TODO disable collectd swap plugin??  Was in old cookbook, but
-# do we want to that here or in a separate recipe?
+#TODO deal with collectd
