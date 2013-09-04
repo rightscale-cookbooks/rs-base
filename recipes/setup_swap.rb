@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rs-base
-# Recipe:: create_swap
+# Recipe:: setup_swap
 #
 # Copyright (C) 2013 RightScale, Inc.
 # 
@@ -17,9 +17,12 @@
 # limitations under the License.
 #
 
-marker "recipe_start"
+marker "recipe_start_rightscale" do
+  template "rightscale_audit_entry.erb"
+end
 
-#TODO add check if requested size is to large.  From old cookbook
+
+#TODO add check if requested size is invalid or to large.  From old cookbook
 
 # Validate 'swap_file' name.
 if node['rs-base']['swap']['file'] !~ 
@@ -28,8 +31,8 @@ if node['rs-base']['swap']['file'] !~
 end
 
 # Create base directory for swap file location
-dir = `dirname #{node['rs-base']['swap']['file']}`
-directory "dir" do
+dir = File.dirname node['rs-base']['swap']['file']
+directory "#{dir}" do
   owner "root"
   group "root"
   mode 00644
@@ -38,7 +41,7 @@ directory "dir" do
 end
 
 if node['rs-base']['swap']['size'].to_i == 0
- log "Swap file size set to 0 - skipping setup" 
+  log "Swap file size set to 0 - skipping setup" 
 else
   swap_file node['rs-base']['swap']['file'] do
     size node['rs-base']['swap']['size'].to_i
@@ -46,4 +49,5 @@ else
     action :create
   end
 end
+
 #TODO deal with collectd
