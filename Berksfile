@@ -1,4 +1,5 @@
 site :opscode
-cookbook "marker", github: "rightscale-cookbooks/marker"
 
 metadata
+
+cookbook "marker", github: "rightscale-cookbooks/marker"

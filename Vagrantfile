@@ -1,7 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant.configure("2") do |config| # All Vagrant configuration is done here. The most common configuration # options are documented and commented below. For a complete reference,
+Vagrant.configure("2") do |config|
+  # All Vagrant configuration is done here. The most common configuration # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
   config.vm.hostname = "rs-base-berkshelf"
@@ -65,7 +66,7 @@ Vagrant.configure("2") do |config| # All Vagrant configuration is done here. The
   # to exclusively install and copy to Vagrant's shelf.
   # config.berkshelf.only = []
 
-config.omnibus.chef_version = :latest
+  config.omnibus.chef_version = :latest
 
   # An array of symbols representing groups of cookbook described in the Vagrantfile
   # to skip installing and copying to Vagrant's shelf.
