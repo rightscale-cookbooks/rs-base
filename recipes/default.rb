@@ -17,4 +17,4 @@
 # limitations under the License.
 #
 
-include_recipe "rs-base::create_swap"
+include_recipe "rs-base::setup_swap"

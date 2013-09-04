@@ -16,6 +16,7 @@ platforms:
 #TODO add test for 0/invalid size
 suites:
 - name: default
+  run_list: ["rs-base::default"]
   attributes: {}
 
 - name: setup_swap

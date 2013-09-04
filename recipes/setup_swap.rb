@@ -21,18 +21,9 @@ marker "recipe_start_rightscale" do
   template "rightscale_audit_entry.erb"
 end
 
-
-#TODO add check if requested size is invalid or to large.  From old cookbook
-
-# Validate 'swap_file' name.
-if node['rs-base']['swap']['file'] !~ 
-  /^\/{1}(((\/{1}\.{1})?[a-zA-Z0-9 ]+\/?)+(\.{1}[a-zA-Z0-9]{2,4})?)$/
-  raise "ERROR: invalid swap file name: #{node['rs-base']['swap']['file']}"
-end
-
 # Create base directory for swap file location
 dir = File.dirname node['rs-base']['swap']['file']
-directory "#{dir}" do
+directory dir do
   owner "root"
   group "root"
   mode 00644
@@ -40,14 +31,10 @@ directory "#{dir}" do
   action :create
 end
 
-if node['rs-base']['swap']['size'].to_i == 0
-  log "Swap file size set to 0 - skipping setup" 
-else
-  swap_file node['rs-base']['swap']['file'] do
-    size node['rs-base']['swap']['size'].to_i
-    persist true
-    action :create
-  end
+swap_file node['rs-base']['swap']['file'] do
+  size node['rs-base']['swap']['size'].to_i
+  persist true
+  action :create
 end
 
-#TODO deal with collectd
+#TODO deal with collectd 
