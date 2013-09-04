@@ -1,10 +1,14 @@
 #!/usr/bin/env bats
 
-@test "creates the swap file" {
+@test "Creates the swap file." {
 
   test -f /mnt/ephemeral/swapfile
 }
 
-@test "has the correct size" {
+@test "Has the correct swapfile size." {
   ls -l --block-size=M /mnt/ephemeral | grep "swap" | grep "1024M"
+}
+
+@test "Swap is in fstab." {
+  grep /mnt/ephemeral/swapfile /etc/fstab
 }
