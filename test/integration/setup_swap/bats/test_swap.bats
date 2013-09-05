@@ -5,7 +5,7 @@
 }
 
 @test "Has the correct swapfile size." {
-  ls -l --block-size=M /mnt/ephemeral | grep "swap" | grep "1024M"
+  ls --size --block-size=M /mnt/ephemeral/swapfile | grep "^1024M"
 }
 
 @test "Swap is in fstab." {
