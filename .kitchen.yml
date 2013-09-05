@@ -13,12 +13,11 @@ platforms:
     box: opscode-centos-6.4
     box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
 
-#TODO add test for 0/invalid size
 suites:
 - name: default
-  run_list: ["rs-base::default"]
+  run_list: "recipe[rs-base::default]"
   attributes: {}
 
 - name: setup_swap
-  run_list: ["rs-base::setup_swap"]
+  run_list: "recipe[rs-base::setup_swap]"
   attributes : {}

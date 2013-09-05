@@ -1,7 +1,6 @@
 #!/usr/bin/env bats
 
 @test "Creates the swap file." {
-
   test -f /mnt/ephemeral/swapfile
 }
 
