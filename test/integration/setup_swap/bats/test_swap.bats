@@ -1,13 +1,19 @@
 #!/usr/bin/env bats
 
+SWAPFILE="/mnt/ephemeral/swapfile"
+
 @test "Creates the swap file." {
-  test -f /mnt/ephemeral/swapfile
+  test -f $SWAPFILE
 }
 
 @test "Has the correct swapfile size." {
-  ls --size --block-size=M /mnt/ephemeral/swapfile | grep "^1024M"
+  ls -l --human-readable --block-size=M $SWAPFILE | grep "1024M"
+}
+
+@test "Swapfile is enabled." {
+  swapon -s | grep $SWAPFILE
 }
 
 @test "Swap is in fstab." {
-  grep /mnt/ephemeral/swapfile /etc/fstab
+  grep $SWAPFILE /etc/fstab
 }
