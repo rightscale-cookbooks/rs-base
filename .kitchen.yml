@@ -15,9 +15,9 @@ platforms:
 
 suites:
 - name: default
-  run_list: "recipe[rs-base::default]"
+  run_list: ["recipe[rs-base::default]"]
   attributes: {}
 
 - name: setup_swap
-  run_list: "recipe[rs-base::setup_swap]"
+  run_list: ["recipe[rs-base::setup_swap]"]
   attributes : {}

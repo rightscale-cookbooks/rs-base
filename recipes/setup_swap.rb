@@ -26,7 +26,7 @@ dir = File.dirname node['rs-base']['swap']['file']
 directory dir do
   owner "root"
   group "root"
-  mode 00644
+  mode 00755
   recursive true
   action :create
 end
