@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rs-base
-# Recipe:: default
+# Recipe:: setup_syslog
 #
 # Copyright (C) 2013 RightScale, Inc.
 # 
@@ -17,6 +17,7 @@
 # limitations under the License.
 #
 
-include_recipe "rs-base::swap"
-include_recipe "rs-base::ntp"
-include_recipe "rs-base::setup_syslog"
+marker "recipe_start_rightscale" do
+  template "rightscale_audit_entry.erb"
+end
+

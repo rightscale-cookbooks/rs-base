@@ -25,3 +25,7 @@ suites:
 - name: ntp
   run_list: ["recipe[rs-base::ntp]"]
   attributes : {}
+
+- name: setup_syslog
+  run_list: ["recipe[rs-base::setup_syslog]"]
+  attributes : {}
