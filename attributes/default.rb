@@ -25,3 +25,5 @@ default['rs-base']['ntp']['servers'] = [
   "ec2-us-east.time.rightscale.com",
   "ec2-us-west.time.rightscale.com"
 ]
+
+default['rs-base']['rsyslog_server_ip'] = ''

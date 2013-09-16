@@ -28,3 +28,10 @@ attribute "rs-base/ntp/servers",
     "ec2-us-east.time.rightscale.com",
     "ec2-us-west.time.rightscale.com"
   ]
+
+attribute "rs-base/rsyslog_server_ip",
+  :display_name => "Remote rsyslog server IP.",
+  :description =>
+    "The IP address of the remote rsyslog server.  If 'nil' no remote syslog server is setup.",
+  :recipes => ["rs-base::setup_syslog"],
+  :required => "optional"
