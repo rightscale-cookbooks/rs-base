@@ -21,11 +21,11 @@ marker "recipe_start_rightscale" do
   template "rightscale_audit_entry.erb"
 end
 
-# Setup remote logging server if rsyslog_server_ip is set.
-if node['rs-base']['rsyslog_server_ip']
-  node.set['rsyslog']['server_ip'] = node['rs-base']['rsyslog_server_ip']
-  include_recipe "rsyslog::client"
-else
- # Install basic rsyslog software and configure for local logging only.
+if node['rs-base']['rsyslog_server'].nil? || node['rs-base']['rsyslog_server'].empty?
+  # Install basic rsyslog software and configure for local logging only.
   include_recipe "rsyslog::default"
+else
+  # Setup remote logging server if rsyslog_server is set.
+  node.override['rsyslog']['server_ip'] = node['rs-base']['rsyslog_server']
+  include_recipe "rsyslog::client"
 end

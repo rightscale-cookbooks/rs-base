@@ -26,8 +26,12 @@ suites:
   run_list: ["recipe[rs-base::ntp]"]
   attributes : {}
 
+- name: verify_rsyslogd_running
+  run_list: ["recipe[rs-base::default]"]
+  attributes: {}
+
 - name: setup_syslog
   run_list: ["recipe[rs-base::setup_syslog]"]
   attributes:
     rs-base:
-      rsyslog_server_ip: 192.168.0.1
+      rsyslog_server: 192.168.0.1
