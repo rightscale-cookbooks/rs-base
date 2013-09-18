@@ -8,4 +8,3 @@ version          IO.read(File.join(File.dirname(__FILE__), 'VERSION')) rescue '0
 
 depends 'marker', '~> 0.1.0'
 depends 'swap', '~> 0.3.5'
-

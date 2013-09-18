@@ -17,5 +17,5 @@
 # limitations under the License.
 #
 
-default['rs-base']['swap']['size'] = 1024
+default['rs-base']['swap']['size'] = 1024 # MB
 default['rs-base']['swap']['file'] = "/mnt/ephemeral/swapfile"

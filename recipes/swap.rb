@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rs-base
-# Recipe:: setup_swap
+# Recipe:: swap
 #
 # Copyright (C) 2013 RightScale, Inc.
 # 
@@ -22,7 +22,7 @@ marker "recipe_start_rightscale" do
 end
 
 # Create base directory for swap file location
-dir = File.dirname node['rs-base']['swap']['file']
+dir = ::File.dirname(node['rs-base']['swap']['file'])
 directory dir do
   owner "root"
   group "root"

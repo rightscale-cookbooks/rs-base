@@ -12,13 +12,13 @@ Add a dependency to your cookbook's metadata.rb:
 
 depends 'rs-base'
 
-Add the recipe rs-base::setup_swap to your run list.
+Add the recipe rs-base::swap to your run list.
 
 # Attributes
 
-rs-base::setup_swap
+rs-base::swap
 
-default['rs-base']['swap']['size'] = 1024                     
+default['rs-base']['swap']['size'] = 1024 # MB
 
 The swap file size in M.  This attribute must be a numeric value.  The default is 
 1024 or 1GB.
@@ -31,7 +31,7 @@ on the root '/' parition.
 
 # Recipes
 
-rs-base::setup_swap
+rs-base::swap
 
 Creates a swapfile of the specified size 'default['rs-base']['swap']['size']' in the
 specified location 'default['rs-base']['swap']['file']' and enables it's usage.
