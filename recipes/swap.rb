@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rs-base
-# Recipe:: default
+# Recipe:: swap
 #
 # Copyright (C) 2013 RightScale, Inc.
 # 
@@ -17,4 +17,24 @@
 # limitations under the License.
 #
 
-include_recipe "rs-base::swap"
+marker "recipe_start_rightscale" do
+  template "rightscale_audit_entry.erb"
+end
+
+# Create base directory for swap file location
+dir = ::File.dirname(node['rs-base']['swap']['file'])
+directory dir do
+  owner "root"
+  group "root"
+  mode 00755
+  recursive true
+  action :create
+end
+
+swap_file node['rs-base']['swap']['file'] do
+  size node['rs-base']['swap']['size'].to_i
+  persist true
+  action :create
+end
+
+#TODO deal with collectd 
