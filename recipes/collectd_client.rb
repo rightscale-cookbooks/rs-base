@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rs-base
-# Recipe:: default
+# Recipe:: monitoring
 #
 # Copyright (C) 2013 RightScale, Inc.
 # 
@@ -17,7 +17,9 @@
 # limitations under the License.
 #
 
-include_recipe "rs-base::swap"
-include_recipe "rs-base::ntp"
-include_recipe "rs-base::rsyslog"
-include_recipe "rs-base::monitoring_client"
+marker "recipe_start_rightscale" do
+  template "rightscale_audit_entry.erb"
+end
+
+#Insall the basic collectd package
+include_recipe "collectd::client"

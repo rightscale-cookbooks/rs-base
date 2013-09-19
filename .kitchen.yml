@@ -35,3 +35,9 @@ suites:
   attributes:
     rs-base:
       rsyslog_server: 192.168.0.1
+
+- name: collectd_client
+  run_list: ["recipe[rs-base::collectd_client]"]
+  attributes:
+    rs-base:
+      servers: collectd.example.com
