@@ -33,5 +33,5 @@ attribute "rs-base/rsyslog_server",
   :display_name => "Remote rsyslog server.",
   :description =>
     "The FQDN or IP address of the remote rsyslog server.  If blank no remote syslog server is setup.",
-  :recipes => ["rs-base::setup_syslog"],
+  :recipes => ["rs-base::syslog"],
   :required => "optional"

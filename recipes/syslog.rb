@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rs-base
-# Recipe:: setup_syslog
+# Recipe:: syslog
 #
 # Copyright (C) 2013 RightScale, Inc.
 # 
