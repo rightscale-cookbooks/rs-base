@@ -29,4 +29,4 @@ default['rs-base']['ntp']['servers'] = [
 default['rs-base']['rsyslog_server_ip'] = ''
 
 # The remote rsyslog server FQDN or IP address.
-default['rs-base']['rsyslog_server'] = ''
+default['rs-base']['rsyslog_server'] = nil
