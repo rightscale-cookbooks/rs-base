@@ -8,10 +8,13 @@ platforms:
   driver_config:
     box: opscode-ubuntu-12.04
     box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box
+    run_list: ["recipe[apt]"]
+
 - name: centos-6.4
   driver_config:
     box: opscode-centos-6.4
     box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
+    run_list: ["recipe[yum::epel]"]
 
 suites:
 - name: default_recipe
@@ -37,7 +40,8 @@ suites:
       rsyslog_server: 192.168.0.1
 
 - name: collectd_client
-  run_list: ["recipe[rs-base::collectd_client]"]
+  run_list: ["recipe[apt]", "recipe[rs-base::collectd_client]"]
   attributes:
     rs-base:
-      servers: collectd.example.com
+      collectd:
+        server: "collectd.example.com"
