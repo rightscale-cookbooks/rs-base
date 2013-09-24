@@ -83,7 +83,7 @@ Vagrant.configure("2") do |config|
 
     chef.run_list = [
         "recipe[rs-base::default]",
-        "recipe[rs-base::setup_ntp]"
+        "recipe[rs-base::ntp]"
     ]
   end
 end

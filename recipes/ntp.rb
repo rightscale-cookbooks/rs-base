@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rs-base
-# Recipe:: setup_ntp
+# Recipe:: ntp
 #
 # Copyright (C) 2013 RightScale, Inc.
 # 
