@@ -39,3 +39,10 @@ attribute "rs-base/rsyslog_server",
     "The FQDN or IP address of the remote rsyslog server.  If blank no remote syslog server is setup.",
   :recipes => ["rs-base::rsyslog"],
   :required => "optional"
+
+attribute "rs-base/collectd_server",
+  :display_name => "Remote collectd Server",
+  :description =>
+    "The FQDN or IP address of the remote collectd server.",
+  :recipes => ["rs-base::collectd_client"],
+  :required => "required"

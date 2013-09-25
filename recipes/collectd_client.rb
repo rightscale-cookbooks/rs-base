@@ -21,5 +21,9 @@ marker "recipe_start_rightscale" do
   template "rightscale_audit_entry.erb"
 end
 
+node.override['collectd']['server'] = node['rs-base']['collectd_server']
+
 #Insall the basic collectd package
+include_recipe "collectd::default"
+#Configure to send data to remote collectd server
 include_recipe "collectd::client"
