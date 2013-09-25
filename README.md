@@ -41,7 +41,7 @@ on the root '/' parition.
     <td nowrap><tt>['rs-base']['ntp']['servers']</tt></td>
     <td>Array</td>
     <td>List of fully qualified domain names for the array of servers that are used for updating time.</td>
-    <td nowrap><tt>time.rightscale.com, ec2-us-east.time.rightscale.com, ec2-us-west.time.rightscale.com</tt></td>
+    <td><tt>time.rightscale.com, ec2-us-east.time.rightscale.com, ec2-us-west.time.rightscale.com</tt></td>
   </tr>
 </table>
 
