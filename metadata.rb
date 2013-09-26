@@ -20,5 +20,9 @@ attribute "rs-base/ntp/servers",
     " for the array of servers that instances should talk to. " +
     " Example: time1.example.com, time2.example.com, time3.example.com",
   :type => "array",
-  :default => "time.rightscale.com, ec2-us-east.time.rightscale.com, ec2-us-west.time.rightscale.com"
+  :default => [
+    "time.rightscale.com",
+    "ec2-us-east.time.rightscale.com",
+    "ec2-us-west.time.rightscale.com"
+    ]
 
