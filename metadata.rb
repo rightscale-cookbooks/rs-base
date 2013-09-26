@@ -18,12 +18,12 @@ recipe "rs-base::ntp", "Installs and configures ntp client."
 attribute "rs-base/ntp/servers",
   :display_name => "NTP Servers",
   :description =>
-    "A comma-separated list of fully qualified domain names " +
-    " for the array of servers that instances should talk to. " +
+    "A comma-separated list of fully qualified domain names" +
+    " for the array of servers that instances should talk to." +
     " Example: time1.example.com, time2.example.com, time3.example.com",
   :type => "array",
   :default => [
     "time.rightscale.com",
     "ec2-us-east.time.rightscale.com",
     "ec2-us-west.time.rightscale.com"
-    ]
+  ]

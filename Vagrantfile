@@ -80,12 +80,9 @@ Vagrant.configure("2") do |config|
         :server_repl_password => 'replpass'
       }
     }
-    # The arguments passed to the chef-solo CLI
-    #chef.arguments = "--logfile /var/log/chef-solo.log"
 
     chef.run_list = [
-        "recipe[rs-base::default]",
-        "recipe[rs-base::ntp]"
+        "recipe[rs-base::default]"
     ]
   end
 end
