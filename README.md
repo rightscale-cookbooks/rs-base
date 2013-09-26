@@ -8,9 +8,11 @@ Requires Chef 10
 
 # Usage
 
-Add a dependency to your cookbook's metadata.rb:
+Add a dependency to your cookbook's `metadata.rb`:
 
+```ruby
 depends 'rs-base'
+```
 
 Add the recipe rs-base::swap to your run list.
 
