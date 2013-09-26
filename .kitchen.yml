@@ -21,3 +21,7 @@ suites:
 - name: swap
   run_list: ["recipe[rs-base::swap]"]
   attributes : {}
+
+- name: ntp
+  run_list: ["recipe[rs-base::ntp]"]
+  attributes : {}
