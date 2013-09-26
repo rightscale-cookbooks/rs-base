@@ -9,7 +9,9 @@ version          IO.read(File.join(File.dirname(__FILE__), 'VERSION')) rescue '0
 supports "centos"
 supports "ubuntu"
 
-depends "ntp"
+depends "ntp", "~> 1.4.0"
+depends "marker", "~> 0.1.0"
+depends "swap", "~> 0.3.5"
 
 recipe "rs-base::ntp", "Installs and configures ntp client."
 
@@ -25,4 +27,3 @@ attribute "rs-base/ntp/servers",
     "ec2-us-east.time.rightscale.com",
     "ec2-us-west.time.rightscale.com"
     ]
-

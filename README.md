@@ -20,7 +20,7 @@ rs-base::swap
 
 default['rs-base']['swap']['size'] = 1024 # MB
 
-The swap file size in M.  This attribute must be a numeric value.  The default is
+The swap file size in MB.  This attribute must be a numeric value.  The default is
 1024 or 1GB.
 
 default['rs-base']['swap']['file'] = "/mnt/ephemeral/swapfile"

@@ -14,6 +14,14 @@ platforms:
     box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
 
 suites:
+- name: default
+  run_list: ["recipe[rs-base::default]"]
+  attributes: {}
+
+- name: swap
+  run_list: ["recipe[rs-base::swap]"]
+  attributes : {}
+
 - name: ntp
   run_list: ["recipe[rs-base::ntp]"]
   attributes : {}

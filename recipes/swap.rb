@@ -1,15 +1,15 @@
 #
 # Cookbook Name:: rs-base
-# Attributes:: default
+# Recipe:: swap
 #
 # Copyright (C) 2013 RightScale, Inc.
-#
+# 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-#
+# 
 #    http://www.apache.org/licenses/LICENSE-2.0
-#
+# 
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,11 +17,24 @@
 # limitations under the License.
 #
 
-default['rs-base']['swap']['size'] = 1024 # MB
-default['rs-base']['swap']['file'] = "/mnt/ephemeral/swapfile"
+marker "recipe_start_rightscale" do
+  template "rightscale_audit_entry.erb"
+end
 
-default['rs-base']['ntp']['servers'] = [
-  "time.rightscale.com",
-  "ec2-us-east.time.rightscale.com",
-  "ec2-us-west.time.rightscale.com"
-  ]
+# Create base directory for swap file location
+dir = ::File.dirname(node['rs-base']['swap']['file'])
+directory dir do
+  owner "root"
+  group "root"
+  mode 00755
+  recursive true
+  action :create
+end
+
+swap_file node['rs-base']['swap']['file'] do
+  size node['rs-base']['swap']['size'].to_i
+  persist true
+  action :create
+end
+
+#TODO deal with collectd 
