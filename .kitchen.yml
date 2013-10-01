@@ -25,7 +25,7 @@ suites:
   run_list: ["recipe[rs-base::swap]"]
   attributes:
     rs-base:
-      collectd_server: "collectd.example.com"
+      collectd_server: "example.com"
 
 - name: ntp
   run_list: ["recipe[rs-base::ntp]"]
@@ -46,4 +46,4 @@ suites:
   run_list: ["recipe[rs-base::collectd_client]"]
   attributes:
     rs-base:
-      collectd_server: "collectd.example.com"
+      collectd_server: "example.com"
