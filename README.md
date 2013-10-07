@@ -47,7 +47,6 @@ on the root '/' parition.
   </tr>
 </table>
 
-
 # Recipes
 
 `rs-base::swap`

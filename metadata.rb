@@ -12,6 +12,7 @@ supports "ubuntu"
 depends "ntp", "~> 1.4.0"
 depends "marker", "~> 0.1.0"
 depends "swap", "~> 0.3.5"
+depends "rsyslog", "~> 1.8.0"
 
 recipe "rs-base::ntp", "Installs and configures ntp client."
 
@@ -27,3 +28,10 @@ attribute "rs-base/ntp/servers",
     "ec2-us-east.time.rightscale.com",
     "ec2-us-west.time.rightscale.com"
   ]
+
+attribute "rs-base/rsyslog_server",
+  :display_name => "Remote Rsyslog Server",
+  :description =>
+    "The FQDN or IP address of the remote rsyslog server.  If blank no remote syslog server is setup.",
+  :recipes => ["rs-base::syslog"],
+  :required => "optional"
