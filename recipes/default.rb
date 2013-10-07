@@ -19,3 +19,4 @@
 
 include_recipe "rs-base::swap"
 include_recipe "rs-base::ntp"
+include_recipe "rs-base::syslog"
