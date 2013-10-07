@@ -17,6 +17,7 @@
 # limitations under the License.
 #
 
-include_attribute "rs-base::swap"
-include_attribute "rs-base::ntp"
-include_attribute "rs-base::syslog"
+default['rs-base']['rsyslog_server_ip'] = ''
+
+# The remote rsyslog server FQDN or IP address.
+default['rs-base']['rsyslog_server'] = nil

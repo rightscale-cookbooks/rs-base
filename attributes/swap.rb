@@ -17,6 +17,5 @@
 # limitations under the License.
 #
 
-include_attribute "rs-base::swap"
-include_attribute "rs-base::ntp"
-include_attribute "rs-base::syslog"
+default['rs-base']['swap']['size'] = 1024 # MB
+default['rs-base']['swap']['file'] = "/mnt/ephemeral/swapfile"
