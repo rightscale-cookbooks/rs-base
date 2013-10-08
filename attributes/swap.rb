@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rs-base
-# Attributes:: default
+# Attributes:: swap 
 #
 # Copyright (C) 2013 RightScale, Inc.
 #

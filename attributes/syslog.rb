@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rs-base
-# Attributes:: default
+# Attributes:: syslog 
 #
 # Copyright (C) 2013 RightScale, Inc.
 #
