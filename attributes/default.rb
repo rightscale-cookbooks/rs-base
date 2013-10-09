@@ -16,7 +16,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-include_attribute "rs-base::swap"
-include_attribute "rs-base::ntp"
-include_attribute "rs-base::syslog"
