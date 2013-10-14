@@ -17,6 +17,7 @@
 # limitations under the License.
 #
 
+include_recipe "ephemeral_lvm"
 include_recipe "rs-base::swap"
 include_recipe "rs-base::ntp"
 include_recipe "rs-base::syslog"
