@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rs-base
-# Attributes:: default
+# Attributes:: swap 
 #
 # Copyright (C) 2013 RightScale, Inc.
 #
@@ -16,3 +16,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+default['rs-base']['swap']['size'] = 1024 # MB
+default['rs-base']['swap']['file'] = "/mnt/ephemeral/swapfile"

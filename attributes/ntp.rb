@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rs-base
-# Attributes:: default
+# Attributes:: ntp 
 #
 # Copyright (C) 2013 RightScale, Inc.
 #
@@ -16,3 +16,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+default['rs-base']['ntp']['servers'] = [
+  "time.rightscale.com",
+  "ec2-us-east.time.rightscale.com",
+  "ec2-us-west.time.rightscale.com"
+]
