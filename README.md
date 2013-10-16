@@ -1,5 +1,7 @@
 # rs-base cookbook
 
+[![Build Status](https://travis-ci.org/rightscale-cookbooks/rs-base.png?branch=master)](https://travis-ci.org/rightscale-cookbooks/rs-base)
+
 Provides the basic recipes for setting up a RightScale instance.
 
 # Requirements
