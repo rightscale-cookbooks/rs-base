@@ -23,7 +23,7 @@ end
 
 node.override['collectd']['server'] = node['rs-base']['collectd_server']
 
-#Insall the basic collectd package
+# Installs the basic collectd package
 include_recipe "collectd::default"
-#Configure to send data to remote collectd server
+# Configures to send data to remote collectd server
 include_recipe "collectd::client"
