@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rs-base
-# Recipe:: collectd_client
+# Attributes:: collectd_client
 #
 # Copyright (C) 2013 RightScale, Inc.
 #
@@ -16,14 +16,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-marker "recipe_start_rightscale" do
-  template "rightscale_audit_entry.erb"
-end
-
-node.override['collectd']['server'] = node['rs-base']['collectd_server']
-
-# Installs the basic collectd package
-include_recipe "collectd::default"
-# Configures to send data to remote collectd server
-include_recipe "collectd::client"
+default['rs-base']['collectd_server'] = nil
