@@ -43,9 +43,18 @@ Add the provided recipes in this cookbook to your run list as needed.
     <td>List of fully qualified domain names for the array of servers that are used for updating time.</td>
     <td><tt>time.rightscale.com, ec2-us-east.time.rightscale.com, ec2-us-west.time.rightscale.com</tt></td>
   </tr>
+  <tr>
+    <td nowrap><tt>['rs-base']['rsyslog_server']</tt></td>
+    <td>FQDN or IP address of a remote rsyslog server.</td>
+    <td><tt>nil</tt></td>
+  </tr>
 </table>
 
 # Recipes
+
+`rs-base::default`
+
+All-in-one recipe to run all recipes in rs-base cookbook.
 
 `rs-base::swap`
 
