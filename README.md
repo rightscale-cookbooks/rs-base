@@ -68,10 +68,6 @@ failure was.
 
 Configures ntp using servers in ['rs-base']['ntp']['servers'].
 
-`rs-base::swap`
-
-Create and setup a swap file.
-
 `rs-base::syslog`
 
 Install and setup rsyslog.
