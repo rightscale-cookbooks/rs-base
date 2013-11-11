@@ -58,8 +58,8 @@ All-in-one recipe to run all recipes in rs-base cookbook.
 
 `rs-base::swap`
 
-Creates a swapfile of the specified size 'default['rs-base']['swap']['size']' in the
-specified location 'default['rs-base']['swap']['file']' and enables it's usage.
+Creates a swapfile of the specified size '['rs-base']['swap']['size']' in the
+specified location '['rs-base']['swap']['file']' and enables it's usage.
 The swap file is added to /etc/fstab and will persist across reboots.  If the size or the
 file location is invalid this recipe will fail with an error message indicating what the
 failure was.
@@ -67,6 +67,14 @@ failure was.
 `rs-base::ntp`
 
 Configures ntp using servers in ['rs-base']['ntp']['servers'].
+
+`rs-base::swap`
+
+Create and setup a swap file.
+
+`rs-base::syslog`
+
+Install and setup rsyslog.
 
 # Author
 
