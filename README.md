@@ -20,42 +20,10 @@ Add the provided recipes in this cookbook to your run list as needed.
 
 # Attributes
 
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Description</th>
-    <th>Default</th>
-    <th>Examples</th>
-  </tr>
-  <tr>
-    <td nowrap><tt>['rs-base']['swap']['size']</tt></td>
-    <td>The swap file size in MB.  This attribute must be a numeric value.</td>
-    <td><tt>1024</tt></td>
-    <td><tt>512, 2048</tt></td>
-  </tr>
-  <tr>
-    <td nowrap><tt>['rs-base']['swap']['file']</tt></td>
-    <td>The location of the swap file.  This attribute must be a valid filename.  By default
-        this is on the ephemeral drive.  If no ephemeral drive exists then it will be created
-        on the root '/' partition.</td>
-    <td><tt>/mnt/ephemeral/swapfile</tt></td>
-    <td><tt>/tmp/swap_file, /swap</tt></td>
-  </tr>
-  <tr>
-    <td nowrap><tt>['rs-base']['ntp']['servers']</tt></td>
-    <td>List of fully qualified domain names for the array of servers that are used for updating time.</td>
-    <td><tt>time.rightscale.com, ec2-us-east.time.rightscale.com, ec2-us-west.time.rightscale.com</tt></td>
-    <td><tt>/tmp/swap_file, /swap</tt></td>
-    <td><tt>0.pool.ntp.org, 1.pool.ntp.org</tt></td>
-  </tr>
-  <tr>
-    <td nowrap><tt>['rs-base']['rsyslog_server']</tt></td>
-    <td>FQDN or IP address of a remote rsyslog server.</td>
-    <td><tt>nil</tt></td>
-    <td><tt>192.168.100.100, syslog.example.com</tt></td>
-  </tr>
-</table>
-
+* `node['rs-base']['swap']['size']` - The swap file size in MB. This attribute must be a numeric value. Default size is 1024.  Examples: 512, 2048
+* `node['rs-base']['swap']['file']` - The location of the swap file. This attribute must be a valid filename. Default is '/mnt/ephemeral/swapfile'. Examples: /tmp/swap_file, /swap
+* `node['rs-base']['ntp']['servers']` - List of fully qualified domain names for the array of servers that are used for updating time. Default is 'time.rightscale.com, ec2-us-east.time.rightscale.com, ec2-us-west.time.rightscale.com' Examples: 0.pool.ntp.org, 1.pool.ntp.org
+* `node['rs-base']['rsyslog_server']` - FQDN or IP address of a remote rsyslog server. Default is 'nil'.  Examples: 192.168.100.100, syslog.example.com
 
 # Recipes
 
