@@ -32,11 +32,11 @@ Example: `'192.168.100.100'`, `'syslog.example.com'`
 
 # Recipes
 
-`rs-base::default`
+## rs-base::default
 
 All-in-one recipe to run all recipes in rs-base cookbook.
 
-`rs-base::swap`
+## rs-base::swap
 
 Creates a swapfile of the specified size `node['rs-base']['swap']['size']` in the
 specified location `node['rs-base']['swap']['file']` and enables it's usage.
@@ -44,11 +44,11 @@ The swap file is added to `/etc/fstab` and will persist across reboots.  If the 
 file location is invalid this recipe will fail with an error message indicating what the
 failure was.
 
-`rs-base::ntp`
+## rs-base::ntp
 
 Configures ntp using servers in `node['rs-base']['ntp']['servers']`.
 
-`rs-base::syslog`
+## rs-base::syslog
 
 Installs and configures the rsyslog service.  If `node['rs-base']['rsyslog_server']` is set, it's value will be
 used as the remote syslog server. Otherwise local machine is used.
