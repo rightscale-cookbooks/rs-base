@@ -47,3 +47,6 @@ suites:
   attributes:
     rs-base:
       collectd_server: "example.com"
+      servers:
+        sketchy:
+          hostname: "example.com"

@@ -22,8 +22,11 @@ marker "recipe_start_rightscale" do
 end
 
 node.override['collectd']['server'] = node['rs-base']['collectd_server']
+node.override['collectd']['master']['ip'] = node['rs-base'][:servers][:sketchy][:hostname]
+
 
 # Installs the basic collectd package
 include_recipe "collectd::default"
 # Configures to send data to remote collectd server
 include_recipe "collectd::client"
+
