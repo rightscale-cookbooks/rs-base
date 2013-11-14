@@ -30,3 +30,15 @@ include_recipe "collectd::default"
 # Configures to send data to remote collectd server
 include_recipe "collectd::client"
 
+# plugins
+collectd_plugin "cpu"
+collectd_plugin "df" do
+  options(:report_reserved=>false,
+          "FSType"=>["proc", "sysfs", "fusectl", "debugfs", "securityfs", "devtmpfs", "devpts", "tmpfs"],
+          :ignore_selected=>true)
+end
+collectd_plugin "disk"
+collectd_plugin "memory"
+collectd_plugin "load"
+collectd_plugin "processes"
+collectd_plugin "users"
