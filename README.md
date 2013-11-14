@@ -21,14 +21,14 @@ Add the provided recipes in this cookbook to your run list as needed.
 # Attributes
 
 * `node['rs-base']['swap']['size']` - The swap file size in MB. This attribute must be a numeric value.
-Default: `1024`  Examples: `512`, `2048`
+  Default: `1024`  Examples: `512`, `2048`
 * `node['rs-base']['swap']['file']` - The location of the swap file. This attribute must be a valid filename.
-Default: `'/mnt/ephemeral/swapfile'`  Examples: `'/tmp/swapfile'`, `'/swap'`
+  Default: `'/mnt/ephemeral/swapfile'`  Examples: `'/tmp/swapfile'`, `'/swap'`
 * `node['rs-base']['ntp']['servers']` - List of fully qualified domain names for the array of servers that are used for
-updating time.  Default: `['time.rightscale.com', 'ec2-us-east.time.rightscale.com', 'ec2-us-west.time.rightscale.com']`
-Example: `['0.pool.ntp.org', '1.pool.ntp.org']`
+  updating time. Default: `['time.rightscale.com', 'ec2-us-east.time.rightscale.com', 'ec2-us-west.time.rightscale.com']`
+  Example: `['0.pool.ntp.org', '1.pool.ntp.org']`
 * `node['rs-base']['rsyslog_server']` - FQDN or IP address of a remote rsyslog server. Default: `nil`
-Example: `'192.168.100.100'`, `'syslog.example.com'`
+  Example: `'192.168.100.100'`, `'syslog.example.com'`
 
 # Recipes
 
@@ -40,7 +40,7 @@ All-in-one recipe to run all recipes in rs-base cookbook.
 
 Creates a swapfile of the specified size `node['rs-base']['swap']['size']` in the
 specified location `node['rs-base']['swap']['file']` and enables it's usage.
-The swap file is added to `/etc/fstab` and will persist across reboots.  If the size or the
+The swap file is added to `/etc/fstab` and will persist across reboots. If the size or the
 file location is invalid this recipe will fail with an error message indicating what the
 failure was.
 
@@ -50,7 +50,7 @@ Configures ntp using servers in `node['rs-base']['ntp']['servers']`.
 
 ## rs-base::syslog
 
-Installs and configures the rsyslog service.  If `node['rs-base']['rsyslog_server']` is set, it's value will be
+Installs and configures the rsyslog service. If `node['rs-base']['rsyslog_server']` is set, it's value will be
 used as the remote syslog server. Otherwise local machine is used.
 
 # Author
