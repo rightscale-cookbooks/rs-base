@@ -4,7 +4,7 @@ maintainer_email 'cookbooks@rightscale.com'
 license          'Apache 2.0'
 description      'Installs/Configures rs-base'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          IO.read(File.join(File.dirname(__FILE__), 'VERSION')) rescue '0.1.0'
+version          '0.1.0'
 
 supports "centos"
 supports "ubuntu"
@@ -14,7 +14,10 @@ depends "marker", "~> 0.1.0"
 depends "swap", "~> 0.3.5"
 depends "rsyslog", "~> 1.8.0"
 
+recipe "rs-base::default", "All-in-one recipe to run all recipes in rs-base cookbook."
 recipe "rs-base::ntp", "Installs and configures ntp client."
+recipe "rs-base::swap", "Create and setup a swap file."
+recipe "rs-base::syslog", "Install and setup rsyslog."
 
 attribute "rs-base/ntp/servers",
   :display_name => "NTP Servers",
