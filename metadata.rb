@@ -10,7 +10,7 @@ supports "centos"
 supports "ubuntu"
 
 depends "ntp", "~> 1.4.0"
-depends "marker", "~> 0.1.0"
+depends "marker", "~> 1.0.0"
 depends "swap", "~> 0.3.5"
 depends "rsyslog", "~> 1.8.0"
 
