@@ -14,6 +14,10 @@ platforms:
     box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
 
 suites:
+- name: default_recipe
+  run_list: ["recipe[rs-base::default]"]
+  attributes: {}
+
 - name: swap
   run_list: ["recipe[rs-base::swap]"]
   attributes : {}
@@ -23,7 +27,7 @@ suites:
   attributes : {}
 
 - name: rsyslog_local
-  run_list: ["recipe[rs-base::default]"]
+  run_list: ["recipe[rs-base::rsyslog]"]
   attributes: {}
 
 - name: rsyslog_remote
