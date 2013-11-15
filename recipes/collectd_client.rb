@@ -22,7 +22,7 @@ marker "recipe_start_rightscale" do
 end
 
 node.override['collectd']['server'] = node['rs-base']['collectd_server']
-node.override['collectd']['master']['ip'] = node['rs-base'][:servers][:sketchy][:hostname]
+node.override['collectd']['master']['ip'] = node['rs-base']['servers']['sketchy']['hostname']
 
 
 # Installs the basic collectd package
