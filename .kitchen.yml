@@ -27,7 +27,7 @@ suites:
   attributes: {}
 
 - name: rsyslog_remote
-  run_list: ["recipe[rs-base::syslog]"]
+  run_list: ["recipe[rs-base::rsyslog]"]
   attributes:
     rs-base:
       rsyslog_server: 192.168.0.1
