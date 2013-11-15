@@ -17,7 +17,7 @@ depends "rsyslog", "~> 1.8.0"
 recipe "rs-base::default", "All-in-one recipe to run all recipes in rs-base cookbook."
 recipe "rs-base::ntp", "Installs and configures ntp client."
 recipe "rs-base::swap", "Create and setup a swap file."
-recipe "rs-base::syslog", "Install and setup rsyslog."
+recipe "rs-base::rsyslog", "Install and setup rsyslog."
 
 attribute "rs-base/ntp/servers",
   :display_name => "NTP Servers",
@@ -36,5 +36,5 @@ attribute "rs-base/rsyslog_server",
   :display_name => "Remote Rsyslog Server",
   :description =>
     "The FQDN or IP address of the remote rsyslog server.  If blank no remote syslog server is setup.",
-  :recipes => ["rs-base::syslog"],
+  :recipes => ["rs-base::rsyslog"],
   :required => "optional"
