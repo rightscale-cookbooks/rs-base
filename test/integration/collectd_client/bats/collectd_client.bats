@@ -39,3 +39,12 @@
 @test "Verify users.conf was created" {
   [ -e '/etc/collectd/plugins/users.conf' ]
 }
+
+@test "Check for process collectdmon running" {
+  ps aux | grep collectdmon | grep -v grep 
+}
+
+@test "Verify receiving socket opened by the server" {
+  netstat -lnp | grep collectd
+}
+
