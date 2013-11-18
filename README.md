@@ -47,7 +47,7 @@ failure was.
 
 Configures ntp using servers in `node['rs-base']['ntp']['servers']`.
 
-## rs-base::syslog
+## rs-base::rsyslog
 
 Installs and configures the rsyslog service. If `node['rs-base']['rsyslog_server']` is set, its value will be
 used as the remote syslog server. Otherwise local machine is used.
