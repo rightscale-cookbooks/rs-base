@@ -28,7 +28,21 @@ node.override['collectd']['master']['ip'] = node['rs-base']['servers']['sketchy'
 # Installs the basic collectd package
 include_recipe "collectd::default"
 # Configures to send data to remote collectd server
-include_recipe "collectd::client"
+#include_recipe "collectd::client"
+#include_recipe "collectd"
+
+servers = []
+if Chef::Config[:solo]
+  servers << node['collectd']['master']['ip']
+else
+  search(:node, 'recipes:"collectd::server"') do |n|
+    servers << n['fqdn']
+  end
+end
+
+if servers.empty?
+  raise "No servers found. Please configure at least one node with collectd::server."
+end
 
 # plugins
 collectd_plugin "cpu"
@@ -42,3 +56,12 @@ collectd_plugin "memory"
 collectd_plugin "load"
 collectd_plugin "processes"
 collectd_plugin "users"
+
+collectd_plugin 'network' do
+  template 'network.conf.erb'
+  cookbook 'rs-base'
+  options({
+    :hostname => 'sketchy1-66.rightscale.com',
+    :port => '3011'
+  })
+end

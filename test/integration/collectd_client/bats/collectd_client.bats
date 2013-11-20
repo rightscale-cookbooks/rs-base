@@ -5,7 +5,7 @@
 }
 
 @test "Verfiy remote collectd server is configured" {
-  grep example.com /etc/collectd/plugins/network.conf
+  grep sketchy /etc/collectd/plugins/network.conf
 }
 
 @test "Verify collectd is sending data" {
