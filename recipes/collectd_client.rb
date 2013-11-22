@@ -45,6 +45,10 @@ if servers.empty?
 end
 
 # plugins
+collectd_plugin "syslog"
+collectd_plugin "inteface" do
+  options(:Interface=>"eth0")
+end
 collectd_plugin "cpu"
 collectd_plugin "df" do
   options(:report_reserved=>false,
