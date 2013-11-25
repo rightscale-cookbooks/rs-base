@@ -8,10 +8,6 @@
   grep sketchy /etc/collectd/plugins/network.conf
 }
 
-@test "Verify collectd is sending data" {
-#use tcpdump to verify data is being sent out on port 3011???
-}
-
 @test "Verify cpu.conf was created" {
   [ -e '/etc/collectd/plugins/cpu.conf' ]
 }
@@ -47,4 +43,34 @@
 @test "Verify receiving socket opened by the server" {
   netstat -lnp | grep collectd
 }
+
+@test "Check errorlog to make sure write plugin is working" {
+  LOG_LOCATION=""
+  if uname -a | grep Ubuntu;
+  then LOG_LOCATION="/var/log/syslog";
+  else LOG_LOCATION="/var/log/messages";
+  fi
+
+  if tail -n 20 $LOG_LOCATION | grep -q "you didn't load any write plugins";
+  then
+    return 1; # We found the string, so we have a problem with write plugin
+  else
+    return 0;
+  fi
+}
+
+@test "Verify collectd is sending data" {
+  # Use a 10 secone timeout, this always catches two messages.  
+  # We store results in a file and pipe to 'true' because the timeout command
+  # will return exit status 124 when it expires and this causes test to fail.
+  timeout 10s tcpdump -i eth0 -p -n -s 1500 udp port 3011 > /tmp/tcpdump | true; 
+  if grep 3011 /tmp/tcpdump;
+  then
+     rm /tmp/tcpdump
+     return 0 
+  fi
+  rm /tmp/tcpdump
+  return 0
+}
+
 

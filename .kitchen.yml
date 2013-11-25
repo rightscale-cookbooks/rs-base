@@ -46,7 +46,7 @@ suites:
   run_list: ["recipe[rs-base::collectd_client]"]
   attributes:
     rs-base:
-      collectd_server: "example.com"
+      collectd_server: "sketchy1-66.rightscale.com"
       servers:
         sketchy:
-          hostname: "example.com"
+          hostname: "sketchy1-66.rightscale.com"

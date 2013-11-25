@@ -17,4 +17,3 @@
 # limitations under the License.
 #
 default['rs-base']['collectd_server'] = nil
-default['rs-base']['servers']['sketchy']['hostname'] = nil

@@ -22,18 +22,14 @@ marker "recipe_start_rightscale" do
 end
 
 node.override['collectd']['server'] = node['rs-base']['collectd_server']
-node.override['collectd']['master']['ip'] = node['rs-base']['servers']['sketchy']['hostname']
 
 
-# Installs the basic collectd package
 include_recipe "collectd::default"
-# Configures to send data to remote collectd server
-#include_recipe "collectd::client"
-#include_recipe "collectd"
+
 
 servers = []
 if Chef::Config[:solo]
-  servers << node['collectd']['master']['ip']
+  servers << node['rs-base']['collectd_server']
 else
   search(:node, 'recipes:"collectd::server"') do |n|
     servers << n['fqdn']
@@ -65,7 +61,7 @@ collectd_plugin 'network' do
   template 'network.conf.erb'
   cookbook 'rs-base'
   options({
-    :hostname => 'sketchy1-66.rightscale.com',
+    :hostname => node['rs-base']['collectd_server'],
     :port => '3011'
   })
 end
