@@ -16,4 +16,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 default['rs-base']['collectd_server'] = nil
