@@ -52,7 +52,7 @@ Configures ntp using servers in `node['rs-base']['ntp']['servers']`.
 Installs and configures the rsyslog service. If `node['rs-base']['rsyslog_server']` is set, its value will be
 used as the remote syslog server. Otherwise local machine is used.
 
-## rs-base::collectd_client
+## rs-base::collectd
 
 Installs the collectd client using default configuration.
 

@@ -44,5 +44,5 @@ attribute "rs-base/collectd_server",
   :display_name => "Remote collectd Server",
   :description =>
     "The FQDN or IP address of the remote collectd server.",
-  :recipes => ["rs-base::collectd_client"],
+  :recipes => ["rs-base::collectd"],
   :required => "required"

@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rs-base
-# Recipe:: collectd_client
+# Recipe:: collectd
 #
 # Copyright (C) 2013 RightScale, Inc.
 #
