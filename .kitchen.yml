@@ -46,6 +46,3 @@ suites:
   attributes:
     rs-base:
       collectd_server: "sketchy1-66.rightscale.com"
-      servers:
-        sketchy:
-          hostname: "sketchy1-66.rightscale.com"

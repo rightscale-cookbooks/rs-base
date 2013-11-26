@@ -21,23 +21,10 @@ marker "recipe_start_rightscale" do
   template "rightscale_audit_entry.erb"
 end
 
-node.override['collectd']['server'] = node['rs-base']['collectd_server']
-
-
 include_recipe "collectd::default"
 
-
-servers = []
-if Chef::Config[:solo]
-  servers << node['rs-base']['collectd_server']
-else
-  search(:node, 'recipes:"collectd::server"') do |n|
-    servers << n['fqdn']
-  end
-end
-
-if servers.empty?
-  raise "No servers found. Please configure at least one node with collectd::server."
+if node['rs-base']['collectd_server'] == nil 
+  raise "No sketchy server set"
 end
 
 # plugins
@@ -47,9 +34,11 @@ collectd_plugin "inteface" do
 end
 collectd_plugin "cpu"
 collectd_plugin "df" do
-  options(:report_reserved=>false,
-          "FSType"=>["proc", "sysfs", "fusectl", "debugfs", "securityfs", "devtmpfs", "devpts", "tmpfs"],
-          :ignore_selected=>true)
+  options({
+    :report_reserved=>false,
+    "FSType"=>["proc", "sysfs", "fusectl", "debugfs", "securityfs", "devtmpfs", "devpts", "tmpfs"],
+    :ignore_selected=>true
+  })
 end
 collectd_plugin "disk"
 collectd_plugin "memory"
