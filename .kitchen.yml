@@ -18,7 +18,9 @@ platforms:
 suites:
 - name: default_recipe
   run_list: ["recipe[rs-base::default]"]
-  attributes: {}
+  attributes:
+    rs-base:
+      collectd_server: "sketchy1-66.rightscale.com"
 
 - name: swap
   run_list: ["recipe[rs-base::swap]"]
