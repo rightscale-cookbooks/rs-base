@@ -1,39 +1,45 @@
 #!/usr/bin/env bats
+DEFAULT_PLUGIN_DIR=""
+if uname -a | grep ubuntu;
+  then DEFAULT_PLUGIN_DIR="/etc/collectd/plugins"
+  else DEFAULT_PLUGIN_DIR="/etc/collectd.d"
+fi
+
 
 @test "Verify collectd process is running." {
   pgrep collectd
 }
 
 @test "Verfiy remote collectd server is configured" {
-  grep sketchy /etc/collectd/plugins/network.conf
+  grep sketchy $DEFAULT_PLUGIN_DIR/network.conf
 }
 
 @test "Verify cpu.conf was created" {
-  [ -e '/etc/collectd/plugins/cpu.conf' ]
+  [ -e $DEFAULT_PLUGIN_DIR/cpu.conf ]
 }
 
 @test "Verify df.conf was created" {
-  [ -e '/etc/collectd/plugins/df.conf' ]
+  [ -e $DEFAULT_PLUGIN_DIR/df.conf ]
 }
 
 @test "Verify load.conf was created" {
-  [ -e '/etc/collectd/plugins/load.conf' ]
+  [ -e $DEFAULT_PLUGIN_DIR/load.conf ]
 }
 
 @test "Verify disk.conf was created" {
-  [ -e '/etc/collectd/plugins/disk.conf' ]
+  [ -e $DEFAULT_PLUGIN_DIR/disk.conf ]
 }
 
 @test "Verify memory.conf was created" {
-  [ -e '/etc/collectd/plugins/memory.conf' ]
+  [ -e $DEFAULT_PLUGIN_DIR/memory.conf ]
 }
 
 @test "Verify processes.conf was created" {
-  [ -e '/etc/collectd/plugins/processes.conf' ]
+  [ -e $DEFAULT_PLUGIN_DIR/processes.conf ]
 }
 
 @test "Verify users.conf was created" {
-  [ -e '/etc/collectd/plugins/users.conf' ]
+  [ -e $DEFAULT_PLUGIN_DIR/users.conf ]
 }
 
 @test "Check for process collectdmon running" {
