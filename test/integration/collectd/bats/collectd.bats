@@ -69,7 +69,7 @@ fi
   # Use a 10 second timeout, this always catches two messages.  
   # We store results in a file and pipe to 'true' because the timeout command
   # will return exit status 124 when it expires and this causes test to fail.
-  timeout 10s tcpdump -i eth0 -p -n -s 1500 udp port 3011 > /tmp/tcpdump | true; 
+  timeout 10s tcpdump -i eth0 -p -n -nn -s 1500 udp port 3011 > /tmp/tcpdump | true; 
   if grep 3011 /tmp/tcpdump;
   then
      rm /tmp/tcpdump
