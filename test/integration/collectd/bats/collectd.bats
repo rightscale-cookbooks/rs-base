@@ -70,7 +70,7 @@
      return 0 
   fi
   rm /tmp/tcpdump
-  return 0
+  return 1
 }
 
 
