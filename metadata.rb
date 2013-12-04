@@ -19,6 +19,7 @@ recipe "rs-base::default", "All-in-one recipe to run all recipes in rs-base cook
 recipe "rs-base::ntp", "Installs and configures ntp client."
 recipe "rs-base::swap", "Create and setup a swap file."
 recipe "rs-base::rsyslog", "Install and setup rsyslog."
+recipe "rs-base::collectd", "Install collectd"
 
 attribute "rs-base/ntp/servers",
   :display_name => "NTP Servers",
