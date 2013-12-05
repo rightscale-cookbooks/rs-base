@@ -29,7 +29,7 @@ end
 
 # plugins
 collectd_plugin "syslog"
-collectd_plugin "inteface" do
+collectd_plugin "interface" do
   options(:Interface=>"eth0")
 end
 collectd_plugin "cpu"

@@ -5,6 +5,11 @@ if uname -a | grep ubuntu;
   else DEFAULT_PLUGIN_DIR="/etc/collectd.d"
 fi
 
+DEFAULT_CONF=""
+if uname -a | grep ubuntu:
+  then DEFAULT_CONF="/etc/collectd"
+  else DEFAULT_CONF="/etc"
+fi
 
 @test "Verify collectd process is running." {
   pgrep collectd
@@ -12,6 +17,14 @@ fi
 
 @test "Verfiy remote collectd server is configured" {
   grep sketchy $DEFAULT_PLUGIN_DIR/network.conf
+}
+
+@test "Verify collectd.conf file is created" {
+  [ -e $DEFAULT_CONF/collectd.conf  ]
+}
+ 
+@test "Verify threshold conf created" {
+  [ -e $DEFAULT_CONF/thresholds.conf ]
 }
 
 @test "Verify cpu.conf was created" {
