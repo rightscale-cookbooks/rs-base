@@ -6,10 +6,17 @@ if uname -a | grep ubuntu;
 fi
 
 DEFAULT_CONF=""
-if uname -a | grep ubuntu:
+if uname -a | grep ubuntu;
   then DEFAULT_CONF="/etc/collectd"
   else DEFAULT_CONF="/etc"
 fi
+
+LOG_LOCATION=""
+if uname -a | grep Ubuntu;
+  then LOG_LOCATION="/var/log/syslog";
+  else LOG_LOCATION="/var/log/messages";
+fi
+
 
 @test "Verify collectd process is running." {
   pgrep collectd
@@ -19,39 +26,39 @@ fi
   grep sketchy $DEFAULT_PLUGIN_DIR/network.conf
 }
 
-@test "Verify collectd.conf file is created" {
+@test "Verify $DEFAULT_CONF/collectd.conf file is created" {
   [ -e $DEFAULT_CONF/collectd.conf  ]
 }
  
-@test "Verify threshold conf created" {
+@test "Verify $DEFAULT_CONF/threshold.conf created" {
   [ -e $DEFAULT_CONF/thresholds.conf ]
 }
 
-@test "Verify cpu.conf was created" {
+@test "Verify $DEFAULT_PLUGIN_DIR/cpu.conf was created" {
   [ -e $DEFAULT_PLUGIN_DIR/cpu.conf ]
 }
 
-@test "Verify df.conf was created" {
+@test "Verify $DEFAULT_PLUGIN_DIR/df.conf was created" {
   [ -e $DEFAULT_PLUGIN_DIR/df.conf ]
 }
 
-@test "Verify load.conf was created" {
+@test "Verify $DEFAULT_PLUGIN_DIR/load.conf was created" {
   [ -e $DEFAULT_PLUGIN_DIR/load.conf ]
 }
 
-@test "Verify disk.conf was created" {
+@test "Verify $DEFAULT_PLUGIN_DIR/disk.conf was created" {
   [ -e $DEFAULT_PLUGIN_DIR/disk.conf ]
 }
 
-@test "Verify memory.conf was created" {
+@test "Verify $DEFAULT_PLUGIN_DIR/memory.conf was created" {
   [ -e $DEFAULT_PLUGIN_DIR/memory.conf ]
 }
 
-@test "Verify processes.conf was created" {
+@test "Verify $DEFAULT_PLUGIN_DIR/processes.conf was created" {
   [ -e $DEFAULT_PLUGIN_DIR/processes.conf ]
 }
 
-@test "Verify users.conf was created" {
+@test "Verify $DEFAULT_PLUGIN_DIR/users.conf was created" {
   [ -e $DEFAULT_PLUGIN_DIR/users.conf ]
 }
 
@@ -63,13 +70,7 @@ fi
   netstat -lnp | grep collectd
 }
 
-@test "Check errorlog to make sure write plugin is working" {
-  LOG_LOCATION=""
-  if uname -a | grep Ubuntu;
-  then LOG_LOCATION="/var/log/syslog";
-  else LOG_LOCATION="/var/log/messages";
-  fi
-
+@test "Check $LOG_LOCATION to make sure write plugin is working" {
   if tail -n 20 $LOG_LOCATION | grep -q "you didn't load any write plugins";
   then
     return 1; # We found the string, so we have a problem with write plugin
