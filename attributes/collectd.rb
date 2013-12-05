@@ -18,3 +18,4 @@
 #
 
 default['rs-base']['collectd_server'] = nil
+default['rs-base']['instance_uuid'] = nil

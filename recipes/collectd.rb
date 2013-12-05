@@ -21,6 +21,10 @@ marker "recipe_start_rightscale" do
   template "rightscale_audit_entry.erb"
 end
 
+if node['rightscale'] && node['rightscale']['instance_uuid']
+  node['rs-base']['fqdn'] = node['rightscale']['instance_uuid']
+end
+
 include_recipe "collectd::default"
 
 if node['rs-base']['collectd_server'] == nil 
@@ -54,3 +58,5 @@ collectd_plugin 'network' do
     :port => '3011'
   })
 end
+
+#TODO: add resource for tag here
