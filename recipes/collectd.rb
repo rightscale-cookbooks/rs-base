@@ -59,4 +59,14 @@ collectd_plugin 'network' do
   })
 end
 
-#TODO: add resource for tag here
+bash "add_tag_for_collectd_server" do
+  user "root"
+  cwd "/tmp"
+  code <<-EOH
+  rs_tag -a rs_monitoring: state = active  
+  if [ $? -eq 0  ] 
+    then echo "rs_tag created rs_monitoring: stage = active tag"
+    else echo "rs_tag not found, tag not created"
+  fi
+  EOH
+end
