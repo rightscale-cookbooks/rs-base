@@ -22,7 +22,7 @@ marker "recipe_start_rightscale" do
 end
 
 if node['rightscale'] && node['rightscale']['instance_uuid']
-  node['rs-base']['fqdn'] = node['rightscale']['instance_uuid']
+  node.override['collectd']['fqdn'] = node['rightscale']['instance_uuid']
 end
 
 include_recipe "collectd::default"
