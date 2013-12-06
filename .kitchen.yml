@@ -47,3 +47,5 @@ suites:
   attributes:
     rs-base:
       collectd_server: "sketchy1-66.rightscale.com"
+    cloud:
+      provider: vagrant

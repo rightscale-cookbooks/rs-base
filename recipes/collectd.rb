@@ -59,14 +59,7 @@ collectd_plugin 'network' do
   })
 end
 
-bash "add_tag_for_collectd_server" do
-  user "root"
-  cwd "/tmp"
-  code <<-EOH
-  rs_tag -a "rs_monitoring:state=active"  
-  if [ $? -eq 0  ] 
-    then echo "rs_tag created rs_monitoring:state=active"
-    else echo "rs_tag not found, tag not created"
-  fi
-  EOH
+# Add maching tag to activate RS Monitoring
+machine_tag "rs_monitoring:state=active" do
+  action :create
 end
