@@ -59,7 +59,4 @@ collectd_plugin 'network' do
   })
 end
 
-# Add maching tag to activate RS Monitoring
-machine_tag "rs_monitoring:state=active" do
-  action :create
-end
+include_recipe "rs-machine_tag::monitoring"
