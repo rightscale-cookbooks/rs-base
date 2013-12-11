@@ -16,17 +16,17 @@ platforms:
     box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
 
 suites:
-- name: default_recipe
+- name: default
   run_list: ["recipe[rs-base::default]"]
   attributes:
     rs-base:
-      collectd_server: "sketchy1-66.rightscale.com"
+      collectd_server: sketchy1-66.rightscale.com
 
 - name: swap
   run_list: ["recipe[rs-base::swap]"]
   attributes:
     rs-base:
-      collectd_server: "example.com"
+      collectd_server: sketchy1-66.rightscale.com 
 
 - name: ntp
   run_list: ["recipe[rs-base::ntp]"]
@@ -46,6 +46,6 @@ suites:
   run_list: ["recipe[rs-base::collectd]"]
   attributes:
     rs-base:
-      collectd_server: "sketchy1-66.rightscale.com"
+      collectd_server: sketchy1-66.rightscale.com
     cloud:
       provider: vagrant
