@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rs-base
-# Attributes:: collectd
+# Attribute:: collectd
 #
 # Copyright (C) 2013 RightScale, Inc.
 #
@@ -18,4 +18,5 @@
 #
 
 default['rs-base']['collectd_server'] = nil
+default['rs-base']['collectd_server_port'] = 3011
 default['rs-base']['instance_uuid'] = nil

@@ -20,7 +20,7 @@ recipe "rs-base::default", "All-in-one recipe to run all recipes in rs-base cook
 recipe "rs-base::ntp", "Installs and configures ntp client."
 recipe "rs-base::swap", "Create and setup a swap file."
 recipe "rs-base::rsyslog", "Install and setup rsyslog."
-recipe "rs-base::collectd", "Install collectd"
+recipe "rs-base::collectd", "Install and setup collectd and basic set of plugins"
 
 attribute "rs-base/ntp/servers",
   :display_name => "NTP Servers",
@@ -36,15 +36,15 @@ attribute "rs-base/ntp/servers",
   ]
 
 attribute "rs-base/rsyslog_server",
-  :display_name => "Remote Rsyslog Server",
+  :display_name => "Remote rsyslog Server",
   :description =>
     "The FQDN or IP address of the remote rsyslog server.  If blank no remote syslog server is setup.",
-  :recipes => ["rs-base::rsyslog"],
+  :recipes => ["rs-base::default", "rs-base::rsyslog"],
   :required => "optional"
 
 attribute "rs-base/collectd_server",
   :display_name => "Remote collectd Server",
   :description =>
     "The FQDN or IP address of the remote collectd server.",
-  :recipes => ["rs-base::collectd"],
+  :recipes => ["rs-base::default", "rs-base::collectd"],
   :required => "required"

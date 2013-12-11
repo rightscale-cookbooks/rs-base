@@ -27,20 +27,17 @@ end
 
 include_recipe "collectd::default"
 
-if node['rs-base']['collectd_server'] == nil 
-  raise "No sketchy server set"
-end
+raise "No sketchy server set" unless node['rs-base']['collectd_server']
 
-# plugins
 collectd_plugin "syslog"
 collectd_plugin "interface" do
-  options(:Interface=>"eth0")
+  options(:Interface => "eth0")
 end
 collectd_plugin "cpu"
 collectd_plugin "df" do
   options({
     :report_reserved=>false,
-    "FSType"=>["proc", "sysfs", "fusectl", "debugfs", "securityfs", "devtmpfs", "devpts", "tmpfs"],
+    "FSType" => ["proc", "sysfs", "fusectl", "debugfs", "securityfs", "devtmpfs", "devpts", "tmpfs"],
     :ignore_selected=>true
   })
 end
@@ -51,11 +48,11 @@ collectd_plugin "processes"
 collectd_plugin "users"
 
 collectd_plugin 'network' do
-  template 'network.conf.erb'
+  template 'collectd_plugin_network.conf.erb'
   cookbook 'rs-base'
   options({
     :hostname => node['rs-base']['collectd_server'],
-    :port => '3011'
+    :port => node['rs-base']['collectd_server_port'] 
   })
 end
 

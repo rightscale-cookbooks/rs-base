@@ -18,6 +18,6 @@
 #
 
 include_recipe "rs-base::swap"
-include_recipe "rs-base::collectd"
 include_recipe "rs-base::ntp"
 include_recipe "rs-base::rsyslog"
+include_recipe "rs-base::collectd"

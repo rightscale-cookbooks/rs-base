@@ -54,7 +54,8 @@ used as the remote syslog server. Otherwise local machine is used.
 
 ## rs-base::collectd
 
-Installs the collectd client using default configuration.
+Installs the collectd client with some of the basic plugins, syslog, interface, df, disk, memory, load, 
+processes, users, and network. 
 
 # Author
 
