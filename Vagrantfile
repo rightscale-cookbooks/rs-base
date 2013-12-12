@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  # All Vagrant configuration is done here. The most common configuration 
+  # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
@@ -71,15 +71,17 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
-      :mysql => {
-        :server_root_password => 'rootpass',
-        :server_debian_password => 'debpass',
-        :server_repl_password => 'replpass'
+      'rs-base' => {
+        'collectd_server' => 'sketchy1-66.rightscale.com'
+      },
+      'cloud' => {
+        'provider' => 'vagrant'
       }
     }
 
     chef.run_list = [
-        "recipe[rs-base::default]"
+      "recipe[apt]",
+      "recipe[rs-base::default]"
     ]
   end
 end
