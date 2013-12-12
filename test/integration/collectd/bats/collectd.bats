@@ -13,7 +13,7 @@ case `unset GEM_HOME; ohai platform_family | grep -v '\[\|\]'` in
   ;;
 esac
 
-@test "collectd process is running." {
+@test "collectd process is running" {
   pgrep collectd
 }
 
