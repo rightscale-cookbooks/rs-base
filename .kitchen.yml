@@ -2,6 +2,9 @@
 driver_plugin: vagrant
 driver_config:
   require_chef_omnibus: true
+  customize:
+    cpus: 2
+    memory: 1024
 
 platforms:
 - name: ubuntu-12.04
@@ -27,7 +30,7 @@ suites:
   run_list: ["recipe[rs-base::swap]"]
   attributes:
     rs-base:
-      collectd_server: sketchy1-66.rightscale.com 
+      collectd_server: sketchy1-66.rightscale.com
 - name: ntp
   run_list: ["recipe[rs-base::ntp]"]
   attributes : {}
