@@ -2,36 +2,50 @@
 driver_plugin: vagrant
 driver_config:
   require_chef_omnibus: true
+  customize:
+    cpus: 2
+    memory: 1024
 
 platforms:
 - name: ubuntu-12.04
+  run_list: ["recipe[apt]"]
   driver_config:
     box: opscode-ubuntu-12.04
     box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box
 - name: centos-6.4
+  run_list: ["recipe[yum::epel]"]
   driver_config:
     box: opscode-centos-6.4
     box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
 
 suites:
-- name: default_recipe
+- name: default
   run_list: ["recipe[rs-base::default]"]
-  attributes: {}
-
+  attributes:
+    cloud:
+      provider: vagrant
+    rs-base:
+      collectd_server: sketchy1-66.rightscale.com
 - name: swap
   run_list: ["recipe[rs-base::swap]"]
-  attributes : {}
-
+  attributes:
+    rs-base:
+      collectd_server: sketchy1-66.rightscale.com
 - name: ntp
   run_list: ["recipe[rs-base::ntp]"]
   attributes : {}
-
 - name: rsyslog_local
   run_list: ["recipe[rs-base::rsyslog]"]
   attributes: {}
-
 - name: rsyslog_remote
   run_list: ["recipe[rs-base::rsyslog]"]
   attributes:
     rs-base:
       rsyslog_server: 192.168.0.1
+- name: collectd
+  run_list: ["recipe[rs-base::collectd]"]
+  attributes:
+    cloud:
+      provider: vagrant
+    rs-base:
+      collectd_server: sketchy1-66.rightscale.com

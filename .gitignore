@@ -16,3 +16,5 @@ bin/*
 VERSION
 .kitchen/
 .kitchen.local.yml
+
+cache_dir/

@@ -11,13 +11,16 @@ supports "ubuntu"
 
 depends "ntp", "~> 1.4.0"
 depends "marker", "~> 1.0.0"
+depends "rs-machine_tag", "~> 1.0.0"
 depends "swap", "~> 0.3.5"
 depends "rsyslog", "~> 1.8.0"
+depends "collectd", "~> 1.1.0"
 
 recipe "rs-base::default", "All-in-one recipe to run all recipes in rs-base cookbook."
 recipe "rs-base::ntp", "Installs and configures ntp client."
 recipe "rs-base::swap", "Create and setup a swap file."
 recipe "rs-base::rsyslog", "Install and setup rsyslog."
+recipe "rs-base::collectd", "Install and setup collectd and basic set of plugins"
 
 attribute "rs-base/ntp/servers",
   :display_name => "NTP Servers",
@@ -25,6 +28,8 @@ attribute "rs-base/ntp/servers",
     "A comma-separated list of fully qualified domain names" +
     " for the array of servers that instances should talk to." +
     " Example: time1.example.com, time2.example.com, time3.example.com",
+  :recipes => ["rs-base::default", "rs-base::ntp"],
+  :required => "optional",
   :type => "array",
   :default => [
     "time.rightscale.com",
@@ -33,8 +38,15 @@ attribute "rs-base/ntp/servers",
   ]
 
 attribute "rs-base/rsyslog_server",
-  :display_name => "Remote Rsyslog Server",
+  :display_name => "Remote rsyslog Server",
   :description =>
     "The FQDN or IP address of the remote rsyslog server.  If blank no remote syslog server is setup.",
-  :recipes => ["rs-base::rsyslog"],
+  :recipes => ["rs-base::default", "rs-base::rsyslog"],
   :required => "optional"
+
+attribute "rs-base/collectd_server",
+  :display_name => "Remote collectd Server",
+  :description =>
+    "The FQDN or IP address of the remote collectd server.",
+  :recipes => ["rs-base::default", "rs-base::collectd"],
+  :required => "required"

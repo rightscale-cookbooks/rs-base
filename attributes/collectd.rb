@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rs-base
-# Recipe:: default
+# Attribute:: collectd
 #
 # Copyright (C) 2013 RightScale, Inc.
 #
@@ -17,8 +17,5 @@
 # limitations under the License.
 #
 
-include_recipe "rs-machine_tag::default"
-include_recipe "rs-base::swap"
-include_recipe "rs-base::ntp"
-include_recipe "rs-base::rsyslog"
-include_recipe "rs-base::collectd"
+default['rs-base']['collectd_server'] = nil
+default['rs-base']['collectd_server_port'] = 3011
