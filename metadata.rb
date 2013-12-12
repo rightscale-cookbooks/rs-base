@@ -14,7 +14,7 @@ depends "marker", "~> 1.0.0"
 depends "rs-machine_tag", "~> 1.0.0"
 depends "swap", "~> 0.3.5"
 depends "rsyslog", "~> 1.8.0"
-depends "collectd", "~> 1.0.0"
+depends "collectd", "~> 1.1.0"
 
 recipe "rs-base::default", "All-in-one recipe to run all recipes in rs-base cookbook."
 recipe "rs-base::ntp", "Installs and configures ntp client."

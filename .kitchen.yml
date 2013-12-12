@@ -19,33 +19,30 @@ suites:
 - name: default
   run_list: ["recipe[rs-base::default]"]
   attributes:
+    cloud:
+      provider: vagrant
     rs-base:
       collectd_server: sketchy1-66.rightscale.com
-
 - name: swap
   run_list: ["recipe[rs-base::swap]"]
   attributes:
     rs-base:
       collectd_server: sketchy1-66.rightscale.com 
-
 - name: ntp
   run_list: ["recipe[rs-base::ntp]"]
   attributes : {}
-
 - name: rsyslog_local
   run_list: ["recipe[rs-base::rsyslog]"]
   attributes: {}
-
 - name: rsyslog_remote
   run_list: ["recipe[rs-base::rsyslog]"]
   attributes:
     rs-base:
       rsyslog_server: 192.168.0.1
-
 - name: collectd
   run_list: ["recipe[rs-base::collectd]"]
   attributes:
-    rs-base:
-      collectd_server: sketchy1-66.rightscale.com
     cloud:
       provider: vagrant
+    rs-base:
+      collectd_server: sketchy1-66.rightscale.com
