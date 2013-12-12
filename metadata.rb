@@ -28,6 +28,8 @@ attribute "rs-base/ntp/servers",
     "A comma-separated list of fully qualified domain names" +
     " for the array of servers that instances should talk to." +
     " Example: time1.example.com, time2.example.com, time3.example.com",
+  :recipes => ["rs-base::default", "rs-base::ntp"],
+  :required => "optional",
   :type => "array",
   :default => [
     "time.rightscale.com",

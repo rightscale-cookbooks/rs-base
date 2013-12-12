@@ -36,9 +36,9 @@ end
 collectd_plugin "cpu"
 collectd_plugin "df" do
   options({
-    :report_reserved=>false,
+    :report_reserved => false,
     "FSType" => ["proc", "sysfs", "fusectl", "debugfs", "securityfs", "devtmpfs", "devpts", "tmpfs"],
-    :ignore_selected=>true
+    :ignore_selected => true,
   })
 end
 collectd_plugin "disk"
@@ -52,7 +52,7 @@ collectd_plugin 'network' do
   cookbook 'rs-base'
   options({
     :hostname => node['rs-base']['collectd_server'],
-    :port => node['rs-base']['collectd_server_port'] 
+    :port => node['rs-base']['collectd_server_port'],
   })
 end
 
