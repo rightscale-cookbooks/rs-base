@@ -33,10 +33,6 @@ esac
   done
 }
 
-@test "collectdmon is running" {
-  pgrep collectdmon
-}
-
 @test "receiving socket opened by the server" {
   netstat -lnp | grep collectd
 }
