@@ -75,8 +75,17 @@ Vagrant.configure("2") do |config|
         'collectd_server' => 'sketchy1-66.rightscale.com'
       },
       'cloud' => {
-        'provider' => 'vagrant'
-      }
+        'public_ips' => [
+          nil,
+          '',
+          '33.33.33.10',
+        ],
+        'private_ips' => [
+          nil,
+          '',
+          '10.0.2.15',
+        ],
+      },
     }
 
     chef.run_list = [
