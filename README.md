@@ -4,19 +4,18 @@
 
 Provides the basic recipes for setting up a RightScale instance.
 
+Github Repository: [https://github.com/rightscale-cookbooks/rs-base](https://github.com/rightscale-cookbooks/rs-base)
+
 # Requirements
 
-Requires Chef 10
+* Requires Chef 11 or higher
+* Platform
+  * Ubuntu 12.04
+  * CentOS 6.4
 
 # Usage
 
-Add a dependency to your cookbook's `metadata.rb`:
-
-```ruby
-depends 'rs-base'
-```
-
-Add the provided recipes in this cookbook to your run list as needed.
+Place the `rs-base::default` recipe in the runlist.
 
 # Attributes
 
