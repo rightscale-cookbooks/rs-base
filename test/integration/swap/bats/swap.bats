@@ -7,7 +7,7 @@ SWAPFILE="/mnt/ephemeral/swapfile"
 }
 
 @test "Has the correct swapfile size." {
-  ls -l --human-readable --block-size=M $SWAPFILE | grep "1024M"
+  ls -l --human-readable --block-size=G $SWAPFILE | grep "1G"
 }
 
 @test "Swapfile is enabled." {

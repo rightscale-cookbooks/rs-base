@@ -19,8 +19,8 @@ Place the `rs-base::default` recipe in the runlist.
 
 # Attributes
 
-* `node['rs-base']['swap']['size']` - The swap file size in MB. This attribute must be a numeric value.
-  Default is `1024`.
+* `node['rs-base']['swap']['size']` - The swap file size in GB. This attribute must be an integer.
+  Default is `1`.
 * `node['rs-base']['swap']['file']` - The location of the swap file. This attribute must be a valid filename.
   Default is `'/mnt/ephemeral/swapfile'`.
 * `node['rs-base']['ntp']['servers']` - List of fully qualified domain names for the array of servers that are used for
@@ -36,7 +36,7 @@ All-in-one recipe to run all recipes in rs-base cookbook.
 
 ## rs-base::swap
 
-Creates a swapfile of the specified size `node['rs-base']['swap']['size']` in the
+Creates a swapfile of the specified size (in GB) `node['rs-base']['swap']['size']` in the
 specified location `node['rs-base']['swap']['file']` and enables it's usage.
 The swap file is added to `/etc/fstab` and will persist across reboots. If the size or the
 file location is invalid this recipe will fail with an error message indicating what the
@@ -53,8 +53,8 @@ used as the remote syslog server. Otherwise local machine is used.
 
 ## rs-base::collectd
 
-Installs the collectd client with some of the basic plugins, syslog, interface, df, disk, memory, load, 
-processes, users, and network. 
+Installs the collectd client with some of the basic plugins, syslog, interface, df, disk, memory, load,
+processes, users, and network.
 
 # Author
 
