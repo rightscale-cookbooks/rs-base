@@ -37,6 +37,15 @@ attribute "rs-base/ntp/servers",
     "ec2-us-west.time.rightscale.com"
   ]
 
+attribute "rs-base/swap/size",
+  :display_name => "Swap Size",
+  :description =>
+    "The size of the swap file (in Gigabytes). This value should be an integer." +
+    " Example: 1",
+  :recipes => ["rs-base::default", "rs-base::swap"],
+  :required => "optional",
+  :default => "1"
+
 attribute "rs-base/rsyslog_server",
   :display_name => "Remote rsyslog Server",
   :description =>
