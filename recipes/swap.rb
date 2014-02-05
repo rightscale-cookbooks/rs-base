@@ -39,3 +39,6 @@ swap_file node['rs-base']['swap']['file'] do
 end
 
 #TODO deal with collectd
+include_recipe "collectd::default"
+
+collectd_plugin "swap"
