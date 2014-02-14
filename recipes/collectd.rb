@@ -56,4 +56,4 @@ collectd_plugin 'network' do
   })
 end
 
-include_recipe "rs-machine_tag::monitoring"
+include_recipe "rightscale_tag::monitoring"

@@ -11,7 +11,7 @@ supports "ubuntu"
 
 depends "ntp", "~> 1.4.0"
 depends "marker", "~> 1.0.0"
-depends "rs-machine_tag", "~> 1.0.0"
+depends "rightscale_tag", "~> 1.0.0"
 depends "swap", "~> 0.3.5"
 depends "rsyslog", "~> 1.8.0"
 depends "collectd", "~> 1.1.0"
