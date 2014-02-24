@@ -53,9 +53,10 @@ attribute "rs-base/rsyslog_server",
   :recipes => ["rs-base::default", "rs-base::rsyslog"],
   :required => "optional"
 
+# This input is required for setting up monitoring and should be set at the ServerTemplate level
 attribute "rs-base/collectd_server",
   :display_name => "Remote collectd Server",
   :description =>
     "The FQDN or IP address of the remote collectd server.",
   :recipes => ["rs-base::default", "rs-base::collectd"],
-  :required => "required"
+  :required => "optional"
