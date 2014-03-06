@@ -17,3 +17,11 @@ SWAPFILE="/mnt/ephemeral/swapfile"
 @test "Swap is in fstab." {
   grep $SWAPFILE /etc/fstab
 }
+
+@test "Collectd configured for swap" {
+  grep -r -P '^LoadPlugin \"swap\"$' /etc/collectd*
+}
+
+@test "Collectd sending swap metric data" {
+  tcpdump -i any -X udp port 3011 -c10 | grep swap
+}
