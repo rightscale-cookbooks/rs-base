@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-include_recipe "rs-machine_tag::default"
+include_recipe "rightscale_tag::default"
 include_recipe "rs-base::swap"
 include_recipe "rs-base::ntp"
 include_recipe "rs-base::rsyslog"
