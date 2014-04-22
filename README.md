@@ -9,6 +9,13 @@ Github Repository: [https://github.com/rightscale-cookbooks/rs-base](https://git
 # Requirements
 
 * Requires Chef 11 or higher
+* Cookbook requirements
+  * [ntp](http://community.opscode.com/cookbooks/ntp)
+  * [marker](http://community.opscode.com/cookbooks/marker)
+  * [rightscale_tag](http://community.opscode.com/cookbooks/rightscale_tag)
+  * [swap](http://community.opscode.com/cookbooks/swap)
+  * [rsyslog](http://community.opscode.com/cookbooks/rsyslog)
+  * [collectd](https://github.com/EfrainOlivares/chef-collectd)
 * Platform
   * Ubuntu 12.04
   * CentOS 6.4
