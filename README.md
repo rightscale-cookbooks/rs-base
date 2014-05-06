@@ -18,7 +18,7 @@ Github Repository: [https://github.com/rightscale-cookbooks/rs-base](https://git
   * [collectd](https://github.com/EfrainOlivares/chef-collectd)
 * Platform
   * Ubuntu 12.04
-  * CentOS 6.4
+  * CentOS 6
 
 # Usage
 
