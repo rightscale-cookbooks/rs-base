@@ -14,6 +14,6 @@ SWAPFILE="/mnt/ephemeral/swapfile"
   swapon -s | grep $SWAPFILE
 }
 
-@test "Swap is in fstab." {
-  grep $SWAPFILE /etc/fstab
+@test "Swap is not in fstab." {
+  ! grep $SWAPFILE /etc/fstab
 }

@@ -34,8 +34,5 @@ end
 swap_file node['rs-base']['swap']['file'] do
   # The swap cookbook expects the size to be in MB. So convert the size in GB to MB.
   size node['rs-base']['swap']['size'].to_i * 1024
-  persist true
   action :create
 end
-
-#TODO deal with collectd
