@@ -44,7 +44,7 @@ All-in-one recipe to run all recipes in rs-base cookbook.
 ## rs-base::swap
 
 Creates a swapfile of the specified size (in GB) `node['rs-base']['swap']['size']` in the
-specified location `node['rs-base']['swap']['file']` and enables it's usage.
+specified location `node['rs-base']['swap']['file']` and enables its usage.
 The swap file is added to `/etc/fstab` and will persist across reboots. If the size or the
 file location is invalid this recipe will fail with an error message indicating what the
 failure was.
