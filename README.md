@@ -1,6 +1,10 @@
 # rs-base cookbook
 
-[![Build Status](https://travis-ci.org/rightscale-cookbooks/rs-base.png?branch=master)](https://travis-ci.org/rightscale-cookbooks/rs-base)
+[![Release](https://img.shields.io/github/release/rightscale-cookbooks/rs-base.svg?style=flat)][release]
+[![Build Status](https://img.shields.io/travis/rightscale-cookbooks/rs-base.svg?style=flat)][travis]
+
+[release]: https://github.com/rightscale-cookbooks/rs-base/releases/latest
+[travis]: https://travis-ci.org/rightscale-cookbooks/rs-base
 
 Provides the basic recipes for setting up a RightScale instance.
 
