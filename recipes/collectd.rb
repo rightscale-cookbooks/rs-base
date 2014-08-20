@@ -43,6 +43,7 @@ collectd_plugin 'df' do
 end
 collectd_plugin 'disk'
 collectd_plugin 'memory'
+collectd_plugin 'swap'
 collectd_plugin 'load'
 collectd_plugin 'processes'
 collectd_plugin 'users'

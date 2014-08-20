@@ -28,7 +28,7 @@ esac
 }
 
 @test "plugin config files exist" {
-  for CONF in cpu.conf df.conf load.conf disk.conf memory.conf processes.conf users.conf; do
+  for CONF in cpu.conf df.conf load.conf disk.conf memory.conf swap.conf processes.conf users.conf; do
     test -f $PLUGIN_CONF_DIR/$CONF
   done
 }
