@@ -17,35 +17,36 @@
 # limitations under the License.
 #
 
-marker "recipe_start_rightscale" do
-  template "rightscale_audit_entry.erb"
+marker 'recipe_start_rightscale' do
+  template 'rightscale_audit_entry.erb'
 end
 
 if node['rightscale'] && node['rightscale']['instance_uuid']
   node.override['collectd']['fqdn'] = node['rightscale']['instance_uuid']
 end
 
-include_recipe "collectd::default"
+include_recipe 'collectd::default'
 
-raise "No sketchy server set" unless node['rs-base']['collectd_server']
+raise 'No sketchy server set' unless node['rs-base']['collectd_server']
 
-collectd_plugin "syslog"
-collectd_plugin "interface" do
-  options(:Interface => "eth0")
+collectd_plugin 'syslog'
+collectd_plugin 'interface' do
+  options(:Interface => 'eth0')
 end
-collectd_plugin "cpu"
-collectd_plugin "df" do
+collectd_plugin 'cpu'
+collectd_plugin 'df' do
   options({
     :report_reserved => false,
-    "FSType" => ["proc", "sysfs", "fusectl", "debugfs", "securityfs", "devtmpfs", "devpts", "tmpfs"],
+    'FSType' => ['proc', 'sysfs', 'fusectl', 'debugfs', 'securityfs', 'devtmpfs', 'devpts', 'tmpfs'],
     :ignore_selected => true,
   })
 end
-collectd_plugin "disk"
-collectd_plugin "memory"
-collectd_plugin "load"
-collectd_plugin "processes"
-collectd_plugin "users"
+collectd_plugin 'disk'
+collectd_plugin 'memory'
+collectd_plugin 'swap'
+collectd_plugin 'load'
+collectd_plugin 'processes'
+collectd_plugin 'users'
 
 collectd_plugin 'network' do
   template 'collectd_plugin_network.conf.erb'
@@ -56,4 +57,4 @@ collectd_plugin 'network' do
   })
 end
 
-include_recipe "rightscale_tag::monitoring"
+include_recipe 'rightscale_tag::monitoring'
