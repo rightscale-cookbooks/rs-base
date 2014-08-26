@@ -42,7 +42,7 @@ esac
 }
 
 @test "collectd is sending data" {
-  # Use a 10 second timeout, this always catches two messages
-  timeout 10s tcpdump -i eth0 -p -n -nn -s 1500 udp port 3011 > /tmp/tcpdump || true
+  # Use a 30 second timeout, this usually catches at least two messages
+  timeout 30s tcpdump -i eth0 -p -n -nn -s 1500 udp port 3011 > /tmp/tcpdump || true
   grep '\.3011: UDP' /tmp/tcpdump
 }
