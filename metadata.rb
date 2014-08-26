@@ -13,7 +13,7 @@ depends "ntp", "~> 1.4.0"
 depends "marker", "~> 1.0.0"
 depends "rightscale_tag", "~> 1.0.0"
 depends "swap", "~> 0.3.5"
-depends "rsyslog", "~> 1.8.0"
+depends "rsyslog", "~> 1.12.2"
 depends "collectd", "~> 1.1.0"
 
 recipe "rs-base::default", "All-in-one recipe to run all recipes in rs-base cookbook."
