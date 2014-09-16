@@ -42,7 +42,7 @@ esac
 }
 
 @test "collectd is sending data" {
-  interface=`ifconfig | sed -re 's/^([a-z0-9]+): .*$/\1/p;d' | grep -v '^lo$'`
+  interface=`ifconfig | sed -re 's/^([a-z0-9]+)(: | *Link).*$/\1/p;d' | grep -v '^lo$'`
   # Use a 30 second timeout, this usually catches at least two messages
   timeout 30s tcpdump -i "$interface" -p -n -nn -s 1500 udp port 3011 > /tmp/tcpdump || true
   grep '\.3011: UDP' /tmp/tcpdump

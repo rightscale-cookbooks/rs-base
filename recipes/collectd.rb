@@ -25,6 +25,20 @@ if node['rightscale'] && node['rightscale']['instance_uuid']
   node.override['collectd']['fqdn'] = node['rightscale']['instance_uuid']
 end
 
+if platform_family?('debian')
+  ['collectd', 'collectd-core'].each do |package_name|
+    apt_preference package_name do
+      pin 'version 4*'
+      pin_priority '1001'
+    end
+
+    package package_name do
+      only_if "dpkg -l #{package_name} | grep '^ii *#{package_name} *5'"
+      action :purge
+    end
+  end
+end
+
 include_recipe 'collectd::default'
 
 raise 'No sketchy server set' unless node['rs-base']['collectd_server']
