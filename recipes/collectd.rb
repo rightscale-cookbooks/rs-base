@@ -37,6 +37,31 @@ if platform_family?('debian')
       action :purge
     end
   end
+elsif platform_family?('rhel')
+  package 'yum-plugin-versionlock'
+  execute "yum versionlock delete 'collectd*'" do
+    returns [0, 1]
+  end
+
+  ['collectd', 'collectd-rrdtool'].each do |package_name|
+    package package_name do
+      only_if "yum list installed #{package_name} | grep '^#{package_name}\.#{node['kernel']['machine']} *5'"
+      action :purge
+    end
+
+    yum_package package_name do
+      allow_downgrade true
+      version(lazy do
+        yum_list = Mixlib::ShellOut.new('yum list available collectd --showduplicates | grep rightscale_software')
+        yum_list.run_command
+        yum_list.error!
+        yum_list.stdout.split[1]
+      end)
+      only_if 'yum list available collectd --showduplicates | grep rightscale_software'
+    end
+  end
+
+  execute "yum versionlock add 'collectd*'"
 end
 
 include_recipe 'collectd::default'
