@@ -27,11 +27,21 @@ platforms:
 suites:
 - name: default
   run_list: ['recipe[rs-base::default]']
+    box: opscode-centos-6.4
+    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
+- name: rhel-6.5
+  run_list: ['recipe[yum::epel]', 'recipe[fake::rhel_register]']
+  driver_config:
+    box: local-rhel-6.5
+    box_url: file:///home/lopaka/opscode_rhel-6.5_chef-provisionerless.box
   attributes:
     cloud:
       provider: vagrant
     rs-base:
       collectd_server: sketchy1-66.rightscale.com
+    fake:
+      rhel_username: <%= ENV['RHEL_USERNAME'] %>
+      rhel_password: <%= ENV['RHEL_PASSWORD'] %>
 - name: swap
   run_list: ['recipe[rs-base::swap]']
   attributes:
