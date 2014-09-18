@@ -33,7 +33,11 @@ suites:
   run_list: ['recipe[yum::epel]', 'recipe[fake::rhel_register]']
   driver_config:
     box: local-rhel-6.5
-    box_url: file:///home/lopaka/opscode_rhel-6.5_chef-provisionerless.box
+    box_url: file:///home/user/opscode_rhel-6.5_chef-provisionerless.box
+
+suites:
+- name: default
+  run_list: ['recipe[rs-base::default]', 'recipe[fake::rhel_unregister]']
   attributes:
     cloud:
       provider: vagrant
