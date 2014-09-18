@@ -8,50 +8,48 @@ driver_config:
 
 platforms:
 - name: ubuntu-14.04
-  run_list: ["recipe[apt]"]
+  run_list: ['recipe[apt]']
   driver_config:
     box: opscode-ubuntu-14.04
 - name: centos-7.0
-  run_list: ["recipe[yum-epel]"]
+  run_list: ['recipe[yum-epel]']
   driver_config:
     box: centos-7.0
 - name: ubuntu-12.04
-  run_list: ["recipe[apt]"]
+  run_list: ['recipe[apt]']
   driver_config:
     box: opscode-ubuntu-12.04
-    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box
-- name: centos-6.4
-  run_list: ["recipe[yum-epel]"]
+- name: centos-6.5
+  run_list: ['recipe[yum-epel]']
   driver_config:
-    box: opscode-centos-6.4
-    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
+    box: opscode-centos-6.5
 
 suites:
 - name: default
-  run_list: ["recipe[rs-base::default]"]
+  run_list: ['recipe[rs-base::default]']
   attributes:
     cloud:
       provider: vagrant
     rs-base:
       collectd_server: sketchy1-66.rightscale.com
 - name: swap
-  run_list: ["recipe[rs-base::swap]"]
+  run_list: ['recipe[rs-base::swap]']
   attributes:
     rs-base:
       collectd_server: sketchy1-66.rightscale.com
 - name: ntp
-  run_list: ["recipe[rs-base::ntp]"]
+  run_list: ['recipe[rs-base::ntp]']
   attributes : {}
 - name: rsyslog_local
-  run_list: ["recipe[rs-base::rsyslog]"]
+  run_list: ['recipe[rs-base::rsyslog]']
   attributes: {}
 - name: rsyslog_remote
-  run_list: ["recipe[rs-base::rsyslog]"]
+  run_list: ['recipe[rs-base::rsyslog]']
   attributes:
     rs-base:
       rsyslog_server: 192.168.0.1
 - name: collectd
-  run_list: ["recipe[fake::rightscale_software]", "recipe[fake::tcpdump]", "recipe[rs-base::collectd]"]
+  run_list: ['recipe[fake::rightscale_software]', 'recipe[fake::tcpdump]', 'recipe[rs-base::collectd]']
   attributes:
     cloud:
       provider: vagrant
