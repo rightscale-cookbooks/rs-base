@@ -30,7 +30,7 @@ suites:
     box: opscode-centos-6.4
     box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
 - name: rhel-6.5
-  run_list: ['recipe[yum::epel]', 'recipe[rhsm::register]']
+  run_list: ['recipe[yum::epel]', 'recipe[rhsm]']
   attributes:
     rhsm:
       rhel_username: <%= ENV['RHEL_USERNAME'] %>
