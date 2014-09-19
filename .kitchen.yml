@@ -23,14 +23,8 @@ platforms:
   run_list: ['recipe[yum-epel]']
   driver_config:
     box: opscode-centos-6.5
-
-suites:
-- name: default
-  run_list: ['recipe[rs-base::default]']
-    box: opscode-centos-6.4
-    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
 - name: rhel-6.5
-  run_list: ['recipe[yum::epel]', 'recipe[rhsm]']
+  run_list: ['recipe[yum-epel]', 'recipe[rhsm]']
   attributes:
     rhsm:
       username: <%= ENV['RHSM_USERNAME'] %>
