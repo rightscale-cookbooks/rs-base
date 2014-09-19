@@ -25,8 +25,16 @@ if platform_family?('debian')
     key 'http://mirror.rightscale.com/mirrorkeyring/rightscale_key.pub'
   end
 elsif platform_family?('rhel')
+  # RHEL 6.5 sets yum variable $releasever to 6Server.
+  # This is a workaround since there is no epel repo of 6Server.
+  if platform?('redhat') && node['platform_version'] =~ /^6/
+    release_ver = '6'
+  else
+    release_ver = '$releasever'
+  end
+
   yum_repository 'rightscale_software' do
-    baseurl 'http://mirror.rightscale.com/rightscale_software/epel/$releasever/$basearch/'
+    baseurl "http://mirror.rightscale.com/rightscale_software/epel/#{release_ver}/$basearch/"
     description 'RightScale Software'
     gpgkey 'http://mirror.rightscale.com/mirrorkeyring/rightscale_key.pub'
   end
