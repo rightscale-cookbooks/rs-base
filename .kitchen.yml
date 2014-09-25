@@ -32,6 +32,15 @@ platforms:
   driver_config:
     box: local-rhel-6.5
     box_url: file://<%= File.expand_path('~') %>/opscode_rhel-6.5_chef-provisionerless.box
+- name: rhel-7.0
+  run_list: ['recipe[yum-epel]', 'recipe[rhsm]']
+  attributes:
+    rhsm:
+      username: <%= ENV['RHSM_USERNAME'] %>
+      password: <%= ENV['RHSM_PASSWORD'] %>
+  driver_config:
+    box: local-rhel-7.0
+    box_url: file://<%= File.expand_path('~') %>/opscode_rhel-7.0_chef-provisionerless.box
 
 suites:
 - name: default
