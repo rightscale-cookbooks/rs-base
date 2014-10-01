@@ -8,5 +8,5 @@ group :integration do
   cookbook 'apt', '~> 2.5.3'
   cookbook 'yum-epel', '~> 0.4.0'
   cookbook 'fake', path: './test/cookbooks/fake'
-  cookbook 'rhsm', github: 'rightscale-cookbooks/rhsm'
+  cookbook 'rhsm', '~> 1.0.0'
 end
