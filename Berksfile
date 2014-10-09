@@ -2,7 +2,7 @@ site :opscode
 
 metadata
 
-cookbook 'collectd', github: 'EfrainOlivares/chef-collectd', branch: 'generalize_install_for_both_centos_and_ubuntu'
+cookbook 'collectd', github: 'rightscale-cookbooks-contrib/chef-collectd', branch: 'generalize_install_for_both_centos_and_ubuntu'
 
 group :integration do
   cookbook 'apt', '~> 2.5.3'
