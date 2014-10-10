@@ -19,7 +19,7 @@ Github Repository: [https://github.com/rightscale-cookbooks/rs-base](https://git
   * [rightscale_tag](http://community.opscode.com/cookbooks/rightscale_tag)
   * [swap](http://community.opscode.com/cookbooks/swap)
   * [rsyslog](http://community.opscode.com/cookbooks/rsyslog)
-  * [collectd](https://github.com/EfrainOlivares/chef-collectd)
+  * [collectd](https://github.com/rightscale-cookbooks-contrib/chef-collectd)
 * Platform
   * Ubuntu 12.04
   * CentOS 6
