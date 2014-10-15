@@ -3,6 +3,12 @@ rs-base Cookbook CHANGELOG
 
 This file is used to list changes made in each version of the rs-base cookbook.
 
+v1.1.3
+------
+
+- Add testing for support of CentOS 7.0, and RedHat Enterprise Linux 7.0.
+- Make sure collectd 4 is installed on all supported platforms.
+
 v1.1.2
 ------
 
