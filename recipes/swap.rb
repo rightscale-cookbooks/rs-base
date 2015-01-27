@@ -42,7 +42,6 @@ if node['platform'] == 'redhat' && node['platform_version'] == '7.0'
 end
 
 swap_file node['rs-base']['swap']['file'] do
-  # The swap cookbook expects the size to be in MB. So convert the size in GB to MB.
   size size_mb
   action :create
 end
