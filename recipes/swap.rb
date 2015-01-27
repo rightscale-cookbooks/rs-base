@@ -2,7 +2,7 @@
 # Cookbook Name:: rs-base
 # Recipe:: swap
 #
-# Copyright (C) 2013 RightScale, Inc.
+# Copyright (C) 2015 RightScale, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -31,8 +31,17 @@ directory dir do
   action :create
 end
 
+# The swap cookbook expects the size to be in MB. So convert the size in GB to MB.
+size_mb = node['rs-base']['swap']['size'].to_i * 1024
+
+# RHEL 7.0 currently fails using an 'fallocate' file as swap which is what is done by the 'swap' community cookbook.
+# Following is a workaround to create the file first with 'dd'.
+# 'dd' command generated from https://github.com/sethvargo-cookbooks/swap/blob/v0.3.8/libraries/swapfile_provider.rb#L141
+if node['platform'] == 'redhat' && node['platform_version'] == '7.0'
+  execute "dd if=/dev/zero of=#{node['rs-base']['swap']['file']} bs=1048576 count=#{size_mb}"
+end
+
 swap_file node['rs-base']['swap']['file'] do
-  # The swap cookbook expects the size to be in MB. So convert the size in GB to MB.
-  size node['rs-base']['swap']['size'].to_i * 1024
+  size size_mb
   action :create
 end
