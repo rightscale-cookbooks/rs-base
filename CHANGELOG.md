@@ -3,6 +3,11 @@ rs-base Cookbook CHANGELOG
 
 This file is used to list changes made in each version of the rs-base cookbook.
 
+v1.1.6
+------
+
+- 'dd' must run when creating swapfile on CentOS 7.
+
 v1.1.5
 ------
 
