@@ -34,10 +34,10 @@ end
 # The swap cookbook expects the size to be in MB. So convert the size in GB to MB.
 size_mb = node['rs-base']['swap']['size'].to_i * 1024
 
-# RHEL 7.* currently fails using an 'fallocate' file as swap which is what is done by the 'swap' community cookbook.
-# Following is a workaround to create the file first with 'dd'.
+# RHEL|CentOS 7.* currently fails using an 'fallocate' file as swap which is what is
+# done by the 'swap' community cookbook. Following is a workaround to create the file first with 'dd'.
 # 'dd' command generated from https://github.com/sethvargo-cookbooks/swap/blob/v0.3.8/libraries/swapfile_provider.rb#L141
-if node['platform'] == 'redhat' && node['platform_version'] =~ /^7\./
+if node['platform'] =~ /redhat|centos/ && node['platform_version'] =~ /^7\./
   execute "dd if=/dev/zero of=#{node['rs-base']['swap']['file']} bs=1048576 count=#{size_mb}"
 end
 
