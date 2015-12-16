@@ -4,7 +4,7 @@ maintainer_email 'cookbooks@rightscale.com'
 license          'Apache 2.0'
 description      'Installs/Configures rs-base'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '1.1.6'
+version          '1.1.7'
 
 supports "centos"
 supports "ubuntu"
@@ -12,7 +12,7 @@ supports "ubuntu"
 depends 'apt', '~> 2.5.3'
 depends "ntp", "~> 1.4.0"
 depends 'marker', '~> 1.0.1'
-depends 'rightscale_tag', '~> 1.0.3'
+depends 'rightscale_tag', '~> 1.0.7'
 depends "swap", "~> 0.3.5"
 depends "rsyslog", "~> 1.12.2"
 depends "collectd", "~> 1.1.0"
