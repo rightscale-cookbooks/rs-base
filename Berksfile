@@ -3,8 +3,8 @@ site :opscode
 metadata
 
 cookbook 'collectd', github: 'rightscale-cookbooks-contrib/chef-collectd', branch: 'generalize_install_for_both_centos_and_ubuntu'
-cookbook 'rightscale_tag', github: 'cdwilhelm/rightscale_tag', branch: 'curt-dev'
-cookbook 'machine_tag', github: 'cdwilhelm/machine_tag', branch: 'curt-dev'
+cookbook 'rightscale_tag', github: 'rightscale-cookbooks/rightscale_tag'
+cookbook 'machine_tag', github: 'rightscale-cookbooks/machine_tag'
 
 group :integration do
   cookbook 'apt', '~> 2.9.2'
