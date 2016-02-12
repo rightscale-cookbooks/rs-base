@@ -13,6 +13,7 @@ Github Repository: [https://github.com/rightscale-cookbooks/rs-base](https://git
 # Requirements
 
 * Requires Chef 11 or higher
+* Requires [RightLink 10](http://docs.rightscale.com/rl10/) See cookbook version 1.1.7 for RightLink 6 support
 * Cookbook requirements
   * [ntp](http://community.opscode.com/cookbooks/ntp)
   * [marker](http://community.opscode.com/cookbooks/marker)
