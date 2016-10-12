@@ -15,7 +15,7 @@ depends 'marker', '~> 1.0.1'
 depends 'rightscale_tag', '~> 1.2.1'
 depends 'machine_tag', '~> 1.2.1'
 depends 'swap', '~> 0.3.5'
-depends 'rsyslog', '~> 4.0.0'
+depends 'rsyslog', '~> 2.2.0'
 depends 'collectd', '~> 1.1.0'
 
 recipe 'rs-base::default', 'All-in-one recipe to run all recipes in rs-base cookbook.'
