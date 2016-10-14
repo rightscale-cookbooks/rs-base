@@ -4,7 +4,7 @@ maintainer_email 'cookbooks@rightscale.com'
 license          'Apache 2.0'
 description      'Installs/Configures rs-base'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '1.3.0'
+version          '1.4.0'
 
 supports 'centos'
 supports 'ubuntu'
@@ -15,7 +15,7 @@ depends 'marker', '~> 1.0.1'
 depends 'rightscale_tag', '~> 1.2.1'
 depends 'machine_tag', '~> 1.2.1'
 depends 'swap', '~> 0.3.5'
-depends 'rsyslog', '~> 1.12.2'
+depends 'rsyslog', '~> 2.2.0'
 depends 'collectd', '~> 1.1.0'
 
 recipe 'rs-base::default', 'All-in-one recipe to run all recipes in rs-base cookbook.'
