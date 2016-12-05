@@ -5,6 +5,8 @@ license          'Apache 2.0'
 description      'Installs/Configures rs-base'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '2.0.0'
+issues_url       'https://github.com/rightscale-cookbooks/rs-base/issues'
+source_url       'https://github.com/rightscale-cookbooks/rs-base'
 
 supports 'centos'
 supports 'ubuntu'
