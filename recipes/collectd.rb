@@ -68,7 +68,7 @@ include_recipe 'collectd_plugins::write_http'
 include_recipe 'rightscale_tag::monitoring'
 
 bash 'update rsc' do
-  flags "-ex"
+  flags '-ex'
   code <<-EOF
     whoami >> /tmp/rsc.log
     sudo /usr/local/bin/rsc rl10 update /rll/tss/control enable_monitoring=util -v &>> /tmp/rsc.log
