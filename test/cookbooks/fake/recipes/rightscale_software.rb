@@ -27,13 +27,13 @@ if platform_family?('debian')
 elsif platform_family?('rhel')
   # RHEL 6.5 and 7.0 sets yum variable $releasever to 6Server and 7Server.
   # This is a workaround since there is no epel repo for 6Server or 7Server.
-  if platform?('redhat') && node['platform_version'] =~ /^6/
-    release_ver = '6'
-  elsif platform?('redhat') && node['platform_version'] =~ /^7/
-    release_ver = '7'
-  else
-    release_ver = '$releasever'
-  end
+  release_ver = if platform?('redhat') && node['platform_version'] =~ /^6/
+                  '6'
+                elsif platform?('redhat') && node['platform_version'] =~ /^7/
+                  '7'
+                else
+                  '$releasever'
+                end
 
   yum_repository 'rightscale_software' do
     baseurl "http://mirror.rightscale.com/rightscale_software/epel/#{release_ver}/$basearch/"

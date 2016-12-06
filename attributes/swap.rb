@@ -18,4 +18,4 @@
 #
 
 default['rs-base']['swap']['size'] = 1 # GB
-default['rs-base']['swap']['file'] = "/mnt/ephemeral/swapfile"
+default['rs-base']['swap']['file'] = '/mnt/ephemeral/swapfile'
