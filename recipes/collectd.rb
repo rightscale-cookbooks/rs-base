@@ -23,7 +23,7 @@ end
 
 Chef::Log.info 'setting collectd defaults'
 node.default['collectd']['service']['configuration']['Hostname'] = node['rs-base']['collectd_hostname']
-node.default['collectd']['service']['configuration']['FQDNLookup'] = false
+node.default['collectd']['service']['configuration']['F_Q_D_N_Lookup'] = false
 node.default['collectd']['service']['configuration']['interval'] = 20
 include_recipe 'collectd::default'
 
@@ -63,10 +63,13 @@ else
   raise 'rs-base needs rl10 secrets to operate'
 end
 
-execute 'update rsc' do
-  command '/usr/local/bin/rsc rl10 update /rll/tss/control enable_monitoring=util'
+bash 'update rsc' do
+  flags "-ex"
+  code <<-EOF
+    sudo /usr/local/bin/rsc rl10 update /rll/tss/control enable_monitoring=util
+  EOF
 end
 
-node.default['collectd-plugins']['write_http']['URL'] = "http://127.0.0.1:#{node['rs-base']['rightscale']['RS_RLL_PORT']}/rll/tss/collectdv5"
+node.default['collectd-plugins']['write_http']['U_R_L'] = "http://127.0.0.1:#{node['rs-base']['rightscale']['RS_RLL_PORT']}/rll/tss/collectdv5"
 include_recipe 'collectd_plugins::write_http'
 include_recipe 'rightscale_tag::monitoring'
