@@ -13,4 +13,6 @@ group :integration do
   gem 'coveralls', require: false
   gem 'machine_tag'
   gem 'chef-rewind'
+  gem 'cookstyle'
+  gem 'rubocop', '~> 0.39.0'
 end
