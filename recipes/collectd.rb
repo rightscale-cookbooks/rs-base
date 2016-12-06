@@ -63,13 +63,14 @@ else
   raise 'rs-base needs rl10 secrets to operate'
 end
 
-bash 'update rsc' do
-  flags "-ex"
-  code <<-EOF
-    sudo /usr/local/bin/rsc rl10 update /rll/tss/control enable_monitoring=util
-  EOF
-end
-
 node.default['collectd-plugins']['write_http']['U_R_L'] = "http://127.0.0.1:#{node['rs-base']['rightscale']['RS_RLL_PORT']}/rll/tss/collectdv5"
 include_recipe 'collectd_plugins::write_http'
 include_recipe 'rightscale_tag::monitoring'
+
+bash 'update rsc' do
+  flags "-ex"
+  code <<-EOF
+    whoami >> /tmp/rsc.log
+    sudo /usr/local/bin/rsc rl10 update /rll/tss/control enable_monitoring=util -v &>> /tmp/rsc.log
+  EOF
+end
