@@ -13,7 +13,7 @@ supports 'ubuntu'
 
 depends 'apt'
 depends 'ntp'
-depends 'marker', '~> 1.0.1'
+depends 'marker'
 depends 'rightscale_tag', '~> 2.0.0'
 depends 'machine_tag', '~> 2.0.0'
 depends 'swap'
