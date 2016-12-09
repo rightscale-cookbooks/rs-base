@@ -60,9 +60,9 @@ attribute 'rs-base/rsyslog_server',
 attribute 'rs-base/monitoring_type',
   display_name: 'RightScale Monitoring Type',
   description: 'RightScale Monitoring Type',
-  recipes: [ 'rs-base::default' ],
+  recipes: ['rs-base::default'],
   required: 'optional',
-  choice: [ 'collectd', 'rightlink'],
+  choice: ['collectd', 'rightlink'],
   default: 'collectd'
 
 attribute 'rs-base/collectd_server',
