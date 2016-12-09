@@ -57,6 +57,14 @@ attribute 'rs-base/rsyslog_server',
   required: 'optional'
 
 # This input is required for setting up monitoring and should be set at the ServerTemplate level
+attribute 'rs-base/monitoring_type',
+  display_name: 'RightScale Monitoring Type',
+  description: 'RightScale Monitoring Type',
+  recipes: [ 'rs-base::default' ],
+  required: 'optional',
+  choice: [ 'collectd', 'rightlink'],
+  default: 'collectd'
+
 attribute 'rs-base/collectd_server',
   display_name: 'Remote collectd Server',
   description:     'The FQDN or IP address of the remote collectd server.',
