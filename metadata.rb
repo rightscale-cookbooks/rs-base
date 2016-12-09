@@ -62,7 +62,7 @@ attribute 'rs-base/monitoring_type',
   description: 'RightScale Monitoring Type',
   recipes: ['rs-base::default'],
   required: 'optional',
-  choice: ['collectd', 'rightlink'],
+  choice: %w('collectd', 'rightlink'),
   default: 'collectd'
 
 attribute 'rs-base/collectd_server',
