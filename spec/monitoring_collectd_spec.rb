@@ -16,6 +16,7 @@ describe 'rs-base::monitoring_collectd' do
     before(:each) do
       allow(::File).to receive(:exist?).and_call_original
       allow(::File).to receive(:exist?).with('/var/run/rightlink/secret').and_return true
+      allow(::File).to receive(:exist?).with('/usr/local/bin/rsc').and_return true
       allow(::File).to receive(:read).and_call_original
       allow(::File).to receive(:read).with('/var/run/rightlink/secret').and_return file_content
     end
