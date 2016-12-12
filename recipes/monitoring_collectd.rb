@@ -73,4 +73,7 @@ bash 'update rsc' do
     whoami >> /tmp/rsc.log
     sudo /usr/local/bin/rsc rl10 update /rll/tss/control enable_monitoring=util -v &>> /tmp/rsc.log
   EOF
+  only_if do
+    ::File.exist?('/usr/local/bin/rsc')
+  end
 end
