@@ -1,5 +1,7 @@
 ---
-driver_plugin: vagrant
+driver:
+  name: vagrant
+
 driver_config:
   require_chef_omnibus: true
   customize:
@@ -7,8 +9,10 @@ driver_config:
     memory: 512
   ssh:
     insert_key: false
+
 provisioner:
   name: chef_zero
+  always_update_cookbooks: true
 
 platforms:
 - name: centos-6.8
