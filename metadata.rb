@@ -12,6 +12,7 @@ supports 'centos'
 supports 'ubuntu'
 
 depends 'apt'
+depends 'yum-epel'
 depends 'ntp'
 depends 'marker'
 depends 'rightscale_tag', '~> 2.0.0'
