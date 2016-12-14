@@ -19,14 +19,14 @@ end
 
 desc 'runs cookstyle'
 task cookstyle: [:setup_test_environment] do
-  cmd = 'bundle exec cookstyle -D --format offenses --display-cop-names'
+  cmd = 'chef exec cookstyle -D --format offenses --display-cop-names'
   puts cmd
   sh(cmd)
 end
 
 desc 'runs foodcritic'
 task :foodcritic do
-  cmd = "bundle exec foodcritic --epic-fail any #{directory}"
+  cmd = "chef exec foodcritic --epic-fail any #{directory}"
   puts cmd
   sh(cmd)
 end
@@ -42,7 +42,7 @@ end
 
 desc 'runs rspec'
 task :rspec do
-  cmd = 'bundle exec rspec --color --format documentation'
+  cmd = 'chef exec rspec --color --format documentation'
   puts cmd
   sh(cmd)
 end
