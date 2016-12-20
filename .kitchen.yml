@@ -19,10 +19,10 @@ platforms:
   run_list: ['recipe[yum-epel]','recipe[fake::create_secrets]']
   driver_config:
     box: bento/centos-6.8
-- name: centos-7.0
+- name: centos-7.2
   run_list: ['recipe[yum-epel]','recipe[fake::create_secrets]']
   driver_config:
-    box: bento/centos-7.0
+    box: bento/centos-7.2
 - name: rhel-6.5
   run_list: ['recipe[yum-epel]', 'recipe[rhsm]','recipe[fake::create_secrets]']
   attributes:
