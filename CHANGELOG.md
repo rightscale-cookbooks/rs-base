@@ -3,6 +3,10 @@ rs-base Cookbook CHANGELOG
 
 This file is used to list changes made in each version of the rs-base cookbook.
 
+v2.0.0
+------
+  - adding support for chef12
+
 v1.3.0
 ------
 

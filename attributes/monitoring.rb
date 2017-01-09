@@ -16,6 +16,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
+default['rs-base']['monitoring_type'] = 'collectd'
 default['rs-base']['collectd_server'] = nil
 default['rs-base']['collectd_server_port'] = 3011

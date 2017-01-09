@@ -17,15 +17,17 @@
 # limitations under the License.
 #
 
-marker "recipe_start_rightscale" do
-  template "rightscale_audit_entry.erb"
+marker 'recipe_start_rightscale' do
+  template 'rightscale_audit_entry.erb'
 end
+
+include_recipe 'ephemeral_lvm::default'
 
 # Create base directory for swap file location
 dir = ::File.dirname(node['rs-base']['swap']['file'])
 directory dir do
-  owner "root"
-  group "root"
+  owner 'root'
+  group 'root'
   mode 00755
   recursive true
   action :create

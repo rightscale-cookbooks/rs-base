@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: rs-base
-# Attributes:: rsyslog
+# Cookbook Name:: rs-haproxy
+# Spec:: spec_helper
 #
-# Copyright (C) 2013 RightScale, Inc.
+# Copyright (C) 2014 RightScale, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,5 +17,21 @@
 # limitations under the License.
 #
 
-# The remote rsyslog server FQDN or IP address.
-default['rs-base']['rsyslog_server'] = nil
+libraries_path = File.expand_path('../../libraries', __FILE__)
+$LOAD_PATH.unshift(libraries_path) unless $LOAD_PATH.include?(libraries_path)
+
+require 'chefspec'
+require 'chefspec/berkshelf'
+require 'chefspec/cacher'
+require 'coveralls'
+require 'rspec/support'
+Coveralls.wear!
+
+ChefSpec::Coverage.start!
+
+RSpec.configure do |config|
+  config.extend(ChefSpec::Cacher)
+  config.platform = 'ubuntu'
+  config.version = '12.04'
+  config.log_level = :error
+end

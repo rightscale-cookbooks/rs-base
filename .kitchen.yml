@@ -1,22 +1,30 @@
 ---
-driver_plugin: vagrant
+driver:
+  name: vagrant
+
 driver_config:
   require_chef_omnibus: true
   customize:
-    cpus: 2
-    memory: 1024
+    cpus: 1
+    memory: 512
+  ssh:
+    insert_key: false
+
+provisioner:
+  name: chef_zero
+  always_update_cookbooks: true
 
 platforms:
-- name: centos-6.5
-  run_list: ['recipe[yum-epel]']
+- name: centos-6.8
+  run_list: ['recipe[yum-epel]','recipe[fake::create_secrets]']
   driver_config:
-    box: opscode-centos-6.5
-- name: centos-7.0
-  run_list: ['recipe[yum-epel]']
+    box: bento/centos-6.8
+- name: centos-7.2
+  run_list: ['recipe[yum-epel]','recipe[fake::create_secrets]']
   driver_config:
-    box: opscode-centos-7.0
+    box: bento/centos-7.2
 - name: rhel-6.5
-  run_list: ['recipe[yum-epel]', 'recipe[rhsm]']
+  run_list: ['recipe[yum-epel]', 'recipe[rhsm]','recipe[fake::create_secrets]']
   attributes:
     rhsm:
       username: <%= ENV['RHSM_USERNAME'] %>
@@ -25,7 +33,7 @@ platforms:
     box: local-rhel-6.5
     box_url: file://<%= File.expand_path('~') %>/opscode_rhel-6.5_chef-provisionerless.box
 - name: rhel-7.0
-  run_list: ['recipe[yum-epel]', 'recipe[rhsm]']
+  run_list: ['recipe[yum-epel]', 'recipe[rhsm]','recipe[fake::create_secrets]']
   attributes:
     rhsm:
       username: <%= ENV['RHSM_USERNAME'] %>
@@ -34,13 +42,13 @@ platforms:
     box: local-rhel-7.0
     box_url: file://<%= File.expand_path('~') %>/opscode_rhel-7.0_chef-provisionerless.box
 - name: ubuntu-12.04
-  run_list: ['recipe[apt]']
+  run_list: ['recipe[apt]','recipe[fake::create_secrets]']
   driver_config:
-    box: opscode-ubuntu-12.04
+    box: bento/ubuntu-12.04
 - name: ubuntu-14.04
-  run_list: ['recipe[apt]']
+  run_list: ['recipe[apt]','recipe[fake::create_secrets]']
   driver_config:
-    box: opscode-ubuntu-14.04
+    box: bento/ubuntu-14.04
 
 suites:
 - name: default

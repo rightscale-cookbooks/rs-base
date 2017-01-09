@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rs-base
-# Attributes:: rsyslog
+# Recipe:: collectd
 #
 # Copyright (C) 2013 RightScale, Inc.
 #
@@ -17,5 +17,15 @@
 # limitations under the License.
 #
 
-# The remote rsyslog server FQDN or IP address.
-default['rs-base']['rsyslog_server'] = nil
+marker 'recipe_start_rightscale' do
+  template 'rightscale_audit_entry.erb'
+end
+
+include_recipe 'rightscale_tag::monitoring'
+
+bash 'update rsc' do
+  flags '-ex'
+  code <<-EOF
+    sudo /usr/local/bin/rsc rl10 update /rll/tss/control enable_monitoring=all -v
+  EOF
+end

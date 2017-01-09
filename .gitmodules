@@ -1,0 +1,12 @@
+[submodule "test/foodcritic/customink"]
+	path = test/foodcritic/customink
+	url = git://github.com/customink-webops/foodcritic-rules.git
+[submodule "test/foodcritic/etsy"]
+	path = test/foodcritic/etsy
+	url = git://github.com/etsy/foodcritic-rules.git
+[submodule "test/foodcritic/cookbook-quality-metrics"]
+	path = test/foodcritic/cookbook-quality-metrics
+	url = git@github.com:chef-cookbooks/cookbook-quality-metrics.git
+[submodule "test/foodcritic/lookout"]
+	path = test/foodcritic/lookout
+	url = git@github.com:lookout/lookout-foodcritic-rules.git
