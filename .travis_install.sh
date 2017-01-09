@@ -6,3 +6,4 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
   git checkout -qf $TRAVIS_COMMIT
 fi
 chef exec rake except_kitchen
+jq '.["result"]["covered_percent"]' coverage/.last_run.json
