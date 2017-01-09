@@ -16,6 +16,7 @@ chef exec rake except_kitchen
 coverage=$(jq '.["result"]["covered_percent"]' coverage/.last_run.json)
 if [ "$coverage" -lt 100 ]; then
   echo -e "${RED} Coverage:${coverage}, please add tests ${NC}"
+  exit 1
 else
   echo -e "${GREEN} Coverage:${coverage}, Great Job ${NC}"
 fi
