@@ -22,7 +22,7 @@ depends 'swap'
 depends 'rsyslog'
 depends 'collectd', '~> 2.2'
 depends 'collectd_plugins', '~> 2.1'
-depends 'ephemeral_lvm', '2.0'
+depends 'ephemeral_lvm', '3.0'
 depends 'sysctl'
 
 recipe 'rs-base::default', 'All-in-one recipe to run all recipes in rs-base cookbook.'

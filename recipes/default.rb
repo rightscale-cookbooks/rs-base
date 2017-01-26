@@ -22,4 +22,4 @@ include_recipe 'rs-base::swap'
 include_recipe 'rs-base::ntp'
 include_recipe 'rs-base::rsyslog'
 include_recipe "rs-base::monitoring_#{node['rs-base']['monitoring_type']}"
-include_recipe 'rs-bash::sysctl'
+include_recipe 'rs-base::sysctl'
