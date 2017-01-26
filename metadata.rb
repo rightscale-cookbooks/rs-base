@@ -81,3 +81,10 @@ attribute 'rs-base/collectd_hostname',
   description: 'The hostname of the collectd instance being monitored',
   recipes: ['rs-base::default', 'rs-base::collectd'],
   required: 'required'
+
+attribute 'rs-base/sysctl/enable',
+  display_name: 'Sysctl Tuning Enable',
+  description: 'Sysctl Tuning Enable',
+  recipes: ['rs-base::default'],
+  default: true,
+  required: 'optional'
