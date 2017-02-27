@@ -23,7 +23,7 @@ depends 'swap'
 depends 'rsyslog'
 depends 'collectd', '~> 2.2.2'
 depends 'collectd_plugins', '~> 2.1.3'
-depends 'ephemeral_lvm', '2.0'
+depends 'ephemeral_lvm', '~> 3.0'
 
 recipe 'rs-base::default', 'All-in-one recipe to run all recipes in rs-base cookbook.'
 recipe 'rs-base::ntp', 'Installs and configures ntp client.'
