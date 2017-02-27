@@ -21,6 +21,8 @@ marker 'recipe_start_rightscale' do
   template 'rightscale_audit_entry.erb'
 end
 
+include_recipe 'yum-epel' if node['platform_family'] == 'rhel'
+
 Chef::Log.info 'setting collectd defaults'
 node.default['collectd']['service']['configuration']['Hostname'] = node['rs-base']['collectd_hostname']
 node.default['collectd']['service']['configuration']['F_Q_D_N_Lookup'] = false

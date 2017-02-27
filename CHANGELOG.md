@@ -3,6 +3,10 @@ rs-base Cookbook CHANGELOG
 
 This file is used to list changes made in each version of the rs-base cookbook.
 
+v2.0.1
+------
+  - add support for collectd on centos/rhel 7 by enabling epel repo
+
 v2.0.0
 ------
   - adding support for chef12
