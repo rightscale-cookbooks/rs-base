@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
@@ -72,25 +73,25 @@ Vagrant.configure('2') do |config|
   config.vm.provision :chef_solo do |chef|
     chef.json = {
       'rs-base' => {
-        'collectd_server' => 'sketchy1-66.rightscale.com'
+        'collectd_server' => 'sketchy1-66.rightscale.com',
       },
       'cloud' => {
         'public_ips' => [
           nil,
           '',
-          '33.33.33.10'
+          '33.33.33.10',
         ],
         'private_ips' => [
           nil,
           '',
-          '10.0.2.15'
-        ]
-      }
+          '10.0.2.15',
+        ],
+      },
     }
 
     chef.run_list = [
       'recipe[apt]',
-      'recipe[rs-base::default]'
+      'recipe[rs-base::default]',
     ]
   end
 end

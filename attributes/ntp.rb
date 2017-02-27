@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #
 # Cookbook Name:: rs-base
 # Attributes:: ntp
@@ -20,5 +21,5 @@
 default['rs-base']['ntp']['servers'] = [
   'time.rightscale.com',
   'ec2-us-east.time.rightscale.com',
-  'ec2-us-west.time.rightscale.com'
+  'ec2-us-west.time.rightscale.com',
 ]

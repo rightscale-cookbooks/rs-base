@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 name             'rs-base'
 maintainer       'RightScale, Inc.'
 maintainer_email 'cookbooks@rightscale.com'
@@ -42,7 +43,7 @@ attribute 'rs-base/ntp/servers',
   default: [
     'time.rightscale.com',
     'ec2-us-east.time.rightscale.com',
-    'ec2-us-west.time.rightscale.com'
+    'ec2-us-west.time.rightscale.com',
   ]
 
 attribute 'rs-base/swap/size',
