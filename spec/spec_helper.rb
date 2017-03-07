@@ -36,3 +36,4 @@ RSpec.configure do |config|
   config.version = '12.04'
   config.log_level = :error
 end
+at_exit { ChefSpec::Coverage.report! }

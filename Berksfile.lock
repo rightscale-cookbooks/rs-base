@@ -10,7 +10,7 @@ DEPENDENCIES
     revision: 058e70879408fceceb628c600d487b1ddfa06cdb
   rightscale_tag
     git: https://github.com/rightscale-cookbooks/rightscale_tag.git
-    revision: d012cd3486fd9fc4efbf5200885bad521301c4b9
+    revision: 69b6eeded9d0587ab39e85aaa2270028764db5d4
   rs-base
     path: .
     metadata: true
