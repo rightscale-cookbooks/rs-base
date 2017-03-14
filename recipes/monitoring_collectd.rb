@@ -23,6 +23,31 @@ marker 'recipe_start_rightscale' do
 end
 
 include_recipe 'yum-epel' if node['platform_family'] == 'rhel'
+include_recipe 'selinux_policy::install' if node['platform_family'] == 'rhel'
+
+selinux_policy_module 'MY_collectd' do
+  content <<-eos
+    module MY_collectd 1.0;
+    require {
+            type unreserved_port_t;
+            type ephemeral_port_t;
+            type policykit_t;
+            type tmp_t;
+            type collectd_t;
+            class tcp_socket name_connect;
+            class dir { create read write open getattr search remove_name add_name rmdir };
+            class file read;
+            class udp_socket name_bind;
+    }
+
+    #============= collectd_t ==============
+    allow collectd_t ephemeral_port_t:tcp_socket name_connect;
+    allow collectd_t tmp_t:dir { create read write open getattr search remove_name add_name rmdir };
+    allow collectd_t unreserved_port_t:udp_socket name_bind;
+  eos
+  action :deploy
+  only_if node['platform_family'] == 'rhel'
+end
 
 Chef::Log.info 'setting collectd defaults'
 node.default['collectd']['service']['configuration']['Hostname'] = node['rs-base']['collectd_hostname']
