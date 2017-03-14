@@ -25,9 +25,9 @@ end
 include_recipe 'yum-epel' if node['platform_family'] == 'rhel'
 include_recipe 'selinux_policy::install' if node['platform_family'] == 'rhel'
 
-selinux_policy_module 'MY_collectd' do
+selinux_policy_module 'rightscale_collectd' do
   content <<-eos
-    module MY_collectd 1.0;
+    module rightscale_collectd 1.0;
     require {
             type unreserved_port_t;
             type ephemeral_port_t;
@@ -48,7 +48,7 @@ selinux_policy_module 'MY_collectd' do
     allow collectd_t unreserved_port_t:udp_socket name_bind;
   eos
   action :deploy
-  only_if node['platform_family'] == 'rhel'
+  only_if if node['platform_family'] == 'rhel'
 end
 
 Chef::Log.info 'setting collectd defaults'
