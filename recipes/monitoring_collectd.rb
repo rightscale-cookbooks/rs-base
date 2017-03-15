@@ -38,13 +38,13 @@ selinux_policy_module 'rightscale_collectd' do
             class dir { create read write open getattr search remove_name add_name rmdir };
             class file read;
             class udp_socket name_bind;
-            class sock_file { create read write open getattr setattr };
+            class sock_file { create read write open getattr setattr unlink };
     }
 
     #============= collectd_t ==============
     allow collectd_t ephemeral_port_t:tcp_socket name_connect;
     allow collectd_t tmp_t:dir { create read write open getattr search remove_name add_name rmdir };
-    allow collectd_t tmp_t:sock_file { create read write open getattr setattr };
+    allow collectd_t tmp_t:sock_file { create read write open getattr setattr unlink };
     allow collectd_t unreserved_port_t:udp_socket name_bind;
   eos
   action :deploy
