@@ -6,6 +6,7 @@ This file is used to list changes made in each version of the rs-base cookbook.
 v2.0.2
 ------
 - adding selinux support for centos7 collectd
+- fixing IgnoreSelectd to IgnoreSelected
 
 v2.0.1
 ------
