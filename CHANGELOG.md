@@ -7,6 +7,7 @@ v2.0.2
 ------
 - adding selinux support for centos7 collectd
 - fixing IgnoreSelectd to IgnoreSelected
+- fixed: Plugin `df' did not register for value `ReportReserved'
 
 v2.0.1
 ------

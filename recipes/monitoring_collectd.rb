@@ -60,7 +60,6 @@ include_recipe 'collectd::default'
 raise 'No sketchy server set' unless node['rs-base']['collectd_server']
 
 Chef::Log.info 'Setting DF Plugin Options'
-node.default['collectd-plugins']['df']['report_reserved'] = false
 node.default['collectd-plugins']['df']['FSType'] = %w(proc sysfs fusectl debugfs securityfs devtmpfs devpts tmpfs)
 node.default['collectd-plugins']['df']['ignore_selected'] = true
 
