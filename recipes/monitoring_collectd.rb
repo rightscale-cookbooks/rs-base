@@ -23,7 +23,6 @@ marker 'recipe_start_rightscale' do
 end
 
 yum_repository 'epel' do
-  mirrorlist 'http://mirrors.fedoraproject.org/mirrorlist?repo=epel-7&arch=$basearch'
   baseurl 'https://dl.fedoraproject.org/pub/epel/7/x86_64/'
   description 'Extra Packages for Enterprise Linux 7 - $basearch'
   enabled true
