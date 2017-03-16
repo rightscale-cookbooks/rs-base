@@ -46,13 +46,13 @@ selinux_policy_module 'rightscale_collectd' do
             class dir { create read write open getattr search remove_name add_name rmdir };
             class file read;
             class udp_socket name_bind;
-            class sock_file { create read write open getattr setattr };
+            class sock_file { create read write open getattr setattr unlink };
     }
 
     #============= collectd_t ==============
     allow collectd_t ephemeral_port_t:tcp_socket name_connect;
     allow collectd_t tmp_t:dir { create read write open getattr search remove_name add_name rmdir };
-    allow collectd_t tmp_t:sock_file { create read write open getattr setattr };
+    allow collectd_t tmp_t:sock_file { create read write open getattr setattr unlink };
     allow collectd_t unreserved_port_t:udp_socket name_bind;
   eos
   action :deploy
@@ -68,9 +68,8 @@ include_recipe 'collectd::default'
 raise 'No sketchy server set' unless node['rs-base']['collectd_server']
 
 Chef::Log.info 'Setting DF Plugin Options'
-node.default['collectd-plugins']['df']['report_reserved'] = false
 node.default['collectd-plugins']['df']['FSType'] = %w(proc sysfs fusectl debugfs securityfs devtmpfs devpts tmpfs)
-node.default['collectd-plugins']['df']['ignore_selectd'] = true
+node.default['collectd-plugins']['df']['ignore_selected'] = true
 
 Chef::Log.info 'Setting UnixSock Plugin Options'
 node.default['collectd-plugins']['unixsock']['SocketFile'] = '/tmp/collectd.sock'
