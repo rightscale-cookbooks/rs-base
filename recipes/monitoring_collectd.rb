@@ -22,7 +22,15 @@ marker 'recipe_start_rightscale' do
   template 'rightscale_audit_entry.erb'
 end
 
-include_recipe 'yum-epel' if node['platform_family'] == 'rhel'
+yum_repository 'epel' do
+  mirrorlist 'http://mirrors.fedoraproject.org/mirrorlist?repo=epel-7&arch=$basearch'
+  baseurl 'https://dl.fedoraproject.org/pub/epel/7/x86_64/'
+  description 'Extra Packages for Enterprise Linux 7 - $basearch'
+  enabled true
+  gpgcheck true
+  gpgkey 'http://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7'
+end
+
 include_recipe 'selinux_policy::install' if node['platform_family'] == 'rhel'
 
 selinux_policy_module 'rightscale_collectd' do
