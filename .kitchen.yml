@@ -40,6 +40,9 @@ suites:
       provider: vagrant
     rightscale:
       RS_RLL_PORT: 12345
+    rs-base:
+      swap:
+        size: 0.1
 - name: swap
   run_list: ['recipe[rs-base::swap]']
   attributes:
