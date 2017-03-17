@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 default['rs-base']['sysctl']['settings'] = {
   'vm.swappiness' => 20,
   'vm.dirty_ratio' => 40,
@@ -10,5 +11,5 @@ default['rs-base']['sysctl']['settings'] = {
   'net.ipv4.tcp_rmem' => '4096 12582912 16777216',
   'net.ipv4.tcp_max_syn_backlog' => 8096,
   'net.ipv4.tcp_slow_start_after_idle' => 0,
-  'net.ipv4.tcp_tw_reuse' => 1
+  'net.ipv4.tcp_tw_reuse' => 1,
 }

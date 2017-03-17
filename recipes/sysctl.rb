@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 if node['rs-base']['sysctl']['enable']
   # https://wiki.mikejung.biz/Sysctl_tweaks
   include_recipe 'sysctl::default'

@@ -45,7 +45,7 @@ def platforms?
     'fedora' => %w(18 23),
     'redhat' => ['6.5', '7.0'],
     'centos' => ['6.5', '7.0'],
-    'suse' => ['11.2', '12.0']
+    'suse' => ['11.2', '12.0'],
   }
   platforms
 end
