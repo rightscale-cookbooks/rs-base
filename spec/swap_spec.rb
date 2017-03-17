@@ -5,6 +5,7 @@ describe 'rs-base::swap' do
   let(:chef_run) do
     ChefSpec::SoloRunner.new do |node|
       node.set['rs-base']['swap']['file'] = '/mnt/ephemeral/swapfile'
+      node.set['rightscale']['monitoring_collector_http'] = 'tss4.rightscale.com'
     end.converge(described_recipe)
   end
 

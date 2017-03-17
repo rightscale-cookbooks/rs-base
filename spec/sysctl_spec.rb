@@ -8,6 +8,7 @@ describe 'rs-base::sysctl' do
         cached(:chef_run) do
           ChefSpec::SoloRunner.new(platform: platform, version: version) do |node|
             node.set['rs-base']['sysctl']['enabled'] = true
+            node.set['rightscale']['monitoring_collector_http'] = 'tss4.rightscale.com'
           end.converge(described_recipe)
         end
 

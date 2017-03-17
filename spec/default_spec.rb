@@ -6,6 +6,7 @@ describe 'rs-base::default' do
     ChefSpec::SoloRunner.new do |node|
       node.set['rightscale']['instance_uuid'] = 'abcd1234'
       node.set['rs-base']['collectd_server'] = 'tss-4.rightscale.com'
+      node.set['rightscale']['monitoring_collector_http'] = 'tss4.rightscale.com'
     end.converge(described_recipe)
   end
 
