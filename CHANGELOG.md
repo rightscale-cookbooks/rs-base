@@ -3,11 +3,13 @@ rs-base Cookbook CHANGELOG
 
 This file is used to list changes made in each version of the rs-base cookbook.
 
-v2.0.2
+v2.1.0
 ------
 - adding selinux support for centos7 collectd
 - fixing IgnoreSelectd to IgnoreSelected
 - fixed: Plugin `df' did not register for value `ReportReserved'
+- adding in sysctl-tuning
+- making rs-base attributes match rightscale plugin format
 
 v2.0.1
 ------

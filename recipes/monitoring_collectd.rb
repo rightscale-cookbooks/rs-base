@@ -57,8 +57,6 @@ node.default['collectd']['service']['configuration']['F_Q_D_N_Lookup'] = false
 node.default['collectd']['service']['configuration']['interval'] = 20
 include_recipe 'collectd::default'
 
-raise 'No sketchy server set' unless node['rs-base']['collectd_server']
-
 Chef::Log.info 'Setting DF Plugin Options'
 node.default['collectd-plugins']['df']['FSType'] = %w(proc sysfs fusectl debugfs securityfs devtmpfs devpts tmpfs)
 node.default['collectd-plugins']['df']['ignore_selected'] = true
@@ -81,18 +79,17 @@ include_recipe 'collectd_plugins::interface'
 
 include_recipe 'collectd_plugins::disk'
 include_recipe 'collectd_plugins::processes'
-# include_recipe 'collectd_plugins::users'
 
 if ::File.exist?('/var/run/rightlink/secret')
   File.read('/var/run/rightlink/secret').each_line do |line|
     k, v = line.strip.split('=')
-    node.default['rs-base']['rightscale'][k] = v
+    node.default['rightscale'][k] = v
   end
 else
   raise 'rs-base needs rl10 secrets to operate'
-end
+end if node['rightscale']['RS_RLL_PORT'].nil?
 
-node.default['collectd-plugins']['write_http']['U_R_L'] = "http://127.0.0.1:#{node['rs-base']['rightscale']['RS_RLL_PORT']}/rll/tss/collectdv5"
+node.default['collectd-plugins']['write_http']['U_R_L'] = "http://127.0.0.1:#{node['rightscale']['RS_RLL_PORT']}/rll/tss/collectdv5"
 include_recipe 'collectd_plugins::write_http'
 include_recipe 'rightscale_tag::monitoring'
 

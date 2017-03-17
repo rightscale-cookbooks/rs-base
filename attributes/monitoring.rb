@@ -18,5 +18,5 @@
 # limitations under the License.
 #
 default['rs-base']['monitoring_type'] = 'collectd'
-default['rs-base']['collectd_server'] = nil
-default['rs-base']['collectd_server_port'] = 3011
+default['rs-base']['collectd_server'] = node['rightscale']['monitoring_collector_http']
+default['rs-base']['collectd_server_port'] = node['rightscale']['RS_RLL_PORT']
