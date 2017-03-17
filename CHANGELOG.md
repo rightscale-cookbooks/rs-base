@@ -10,6 +10,7 @@ v2.1.0
 - fixed: Plugin `df' did not register for value `ReportReserved'
 - adding in sysctl-tuning
 - making rs-base attributes match rightscale plugin format
+- swap converting to_i to to_f
 
 v2.0.1
 ------

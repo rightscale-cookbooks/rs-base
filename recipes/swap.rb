@@ -35,7 +35,7 @@ directory dir do
 end
 
 # The swap cookbook expects the size to be in MB. So convert the size in GB to MB.
-size_mb = node['rs-base']['swap']['size'].to_i * 1024
+size_mb = node['rs-base']['swap']['size'].to_f * 1024
 
 # RHEL|CentOS 7.* currently fails using an 'fallocate' file as swap which is what is
 # done by the 'swap' community cookbook. Following is a workaround to create the file first with 'dd'.
