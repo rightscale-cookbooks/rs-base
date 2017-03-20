@@ -25,9 +25,7 @@ require 'pp'
 require 'chefspec'
 require 'chefspec/berkshelf'
 require 'chefspec/cacher'
-require 'coveralls'
 require 'rspec/support'
-Coveralls.wear!
 
 ChefSpec::Coverage.start!
 

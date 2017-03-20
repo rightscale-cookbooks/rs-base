@@ -5,6 +5,5 @@ gem 'rake'
 gem 'chef', '~> 12.16.0'
 
 group :integration do
-  gem 'coveralls', require: false
   gem 'machine_tag'
 end
