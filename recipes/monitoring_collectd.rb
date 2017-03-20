@@ -22,12 +22,16 @@ marker 'recipe_start_rightscale' do
   template 'rightscale_audit_entry.erb'
 end
 
-yum_repository 'epel' do
-  baseurl 'https://dl.fedoraproject.org/pub/epel/7/x86_64/'
-  description 'Extra Packages for Enterprise Linux 7 - $basearch'
-  enabled true
-  gpgcheck true
-  gpgkey 'http://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7'
+if (node['platform_family'] == 'rhel') && (node['platform_version'].to_i >= 7)
+  yum_repository 'epel' do
+    baseurl 'https://dl.fedoraproject.org/pub/epel/7/x86_64/'
+    description 'Extra Packages for Enterprise Linux 7 - $basearch'
+    enabled true
+    gpgcheck true
+    gpgkey 'http://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7'
+  end
+else
+  include_recipe 'yum-epel'
 end
 
 include_recipe 'selinux_policy::install' if node['platform_family'] == 'rhel'
