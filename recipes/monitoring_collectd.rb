@@ -55,7 +55,9 @@ selinux_policy_module 'rightscale_collectd' do
     allow collectd_t unreserved_port_t:udp_socket name_bind;
   eos
   action :deploy
-  only_if { node['platform_family'] == 'rhel' }
+  only_if do
+    (node['platform_family'] == 'rhel') && (node['platform_version'].to_i >= 7)
+  end
 end
 
 Chef::Log.info 'setting collectd defaults'
