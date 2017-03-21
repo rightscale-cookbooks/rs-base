@@ -12,18 +12,23 @@ Github Repository: [https://github.com/rightscale-cookbooks/rs-base](https://git
 
 # Requirements
 
-* Requires Chef 11 or higher
+* Requires Chef 12 or higher
 * Requires [RightLink 10](http://docs.rightscale.com/rl10/) See cookbook version 1.1.7 for RightLink 6 support
 * Cookbook requirements
-  * [ntp](http://community.opscode.com/cookbooks/ntp)
-  * [marker](http://community.opscode.com/cookbooks/marker)
-  * [rightscale_tag](http://community.opscode.com/cookbooks/rightscale_tag)
-  * [swap](http://community.opscode.com/cookbooks/swap)
-  * [rsyslog](http://community.opscode.com/cookbooks/rsyslog)
-  * [collectd](https://github.com/rightscale-cookbooks-contrib/chef-collectd)
+  * [ntp](https://supermarket.chef.io/cookbooks/ntp)
+  * [marker](http://supermarket.chef.io/cookbooks/marker)
+  * [rightscale_tag](http://supermarket.chef.io/cookbooks/rightscale_tag)
+  * [swap](http://supermarket.chef.io/cookbooks/swap)
+  * [rsyslog](http://supermarket.chef.io/cookbooks/rsyslog)
+  * [collectd](https://supermarket.chef.io/cookbooks/collectd)
+  * [sysctl](https://supermarket.chef.io/cookbooks/sysctl)
+  * [selinux_policy](https://supermarket.chef.io/cookbooks/selinux_policy)
+  * [ephemeral_lvm](https://supermarket.chef.io/cookbooks/ephemeral_lvm)
 * Platform
-  * Ubuntu 12.04
+  * Ubuntu 14.04
+  * Ubuntu 16.04
   * CentOS 6
+  * CentOS 7
 
 # Usage
 
@@ -39,6 +44,7 @@ Place the `rs-base::default` recipe in the runlist.
   updating time.
   Default is `['time.rightscale.com', 'ec2-us-east.time.rightscale.com', 'ec2-us-west.time.rightscale.com']`.
 * `node['rs-base']['rsyslog_server']` - FQDN or IP address of a remote rsyslog server. Default is `nil`.
+* `node['rs-base']['sysctl']['settings']` - see `attributes\sysctl.rb` for defaults
 
 # Recipes
 
@@ -67,6 +73,10 @@ used as the remote syslog server. Otherwise local machine is used.
 
 Installs the collectd client with some of the basic plugins, syslog, interface, df, disk, memory, load,
 processes, users, and network.
+
+## rs-base::sysctl
+
+Set's the sysctl parameters based off netflix tuning page: https://wiki.mikejung.biz/Sysctl_tweaks#Netflix_2014_EC2_sysctl_tweaks(https://wiki.mikejung.biz/Sysctl_tweaks#Netflix_2014_EC2_sysctl_tweaks)
 
 # Author
 

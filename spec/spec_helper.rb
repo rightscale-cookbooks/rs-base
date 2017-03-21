@@ -21,12 +21,11 @@
 libraries_path = File.expand_path('../../libraries', __FILE__)
 $LOAD_PATH.unshift(libraries_path) unless $LOAD_PATH.include?(libraries_path)
 
+require 'pp'
 require 'chefspec'
 require 'chefspec/berkshelf'
 require 'chefspec/cacher'
-require 'coveralls'
 require 'rspec/support'
-Coveralls.wear!
 
 ChefSpec::Coverage.start!
 
@@ -35,4 +34,16 @@ RSpec.configure do |config|
   config.platform = 'ubuntu'
   config.version = '12.04'
   config.log_level = :error
+end
+
+def platforms?
+  platforms = {
+    'ubuntu' => ['14.04', '16.04'],
+    'debian' => ['7.0', '7.4'],
+    'fedora' => %w(18 23),
+    'redhat' => ['6.5', '7.0'],
+    'centos' => ['6.5', '7.0'],
+    'suse' => ['11.2', '12.0'],
+  }
+  platforms
 end

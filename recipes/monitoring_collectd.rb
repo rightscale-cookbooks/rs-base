@@ -22,7 +22,47 @@ marker 'recipe_start_rightscale' do
   template 'rightscale_audit_entry.erb'
 end
 
-include_recipe 'yum-epel' if node['platform_family'] == 'rhel'
+if (node['platform_family'] == 'rhel') && (node['platform_version'].to_i >= 7)
+  yum_repository 'epel' do
+    baseurl 'https://dl.fedoraproject.org/pub/epel/7/x86_64/'
+    description 'Extra Packages for Enterprise Linux 7 - $basearch'
+    enabled true
+    gpgcheck true
+    gpgkey 'http://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7'
+  end
+else
+  include_recipe 'yum-epel'
+end
+
+include_recipe 'selinux_policy::install' if node['platform_family'] == 'rhel'
+
+selinux_policy_module 'rightscale_collectd' do
+  content <<-eos
+    module rightscale_collectd 1.0;
+    require {
+            type unreserved_port_t;
+            type ephemeral_port_t;
+            type policykit_t;
+            type tmp_t;
+            type collectd_t;
+            class tcp_socket name_connect;
+            class dir { create read write open getattr search remove_name add_name rmdir };
+            class file read;
+            class udp_socket name_bind;
+            class sock_file { create read write open getattr setattr unlink };
+    }
+
+    #============= collectd_t ==============
+    allow collectd_t ephemeral_port_t:tcp_socket name_connect;
+    allow collectd_t tmp_t:dir { create read write open getattr search remove_name add_name rmdir };
+    allow collectd_t tmp_t:sock_file { create read write open getattr setattr unlink };
+    allow collectd_t unreserved_port_t:udp_socket name_bind;
+  eos
+  action :deploy
+  only_if do
+    (node['platform_family'] == 'rhel') && (node['platform_version'].to_i >= 7)
+  end
+end
 
 Chef::Log.info 'setting collectd defaults'
 node.default['collectd']['service']['configuration']['Hostname'] = node['rs-base']['collectd_hostname']
@@ -30,12 +70,9 @@ node.default['collectd']['service']['configuration']['F_Q_D_N_Lookup'] = false
 node.default['collectd']['service']['configuration']['interval'] = 20
 include_recipe 'collectd::default'
 
-raise 'No sketchy server set' unless node['rs-base']['collectd_server']
-
 Chef::Log.info 'Setting DF Plugin Options'
-node.default['collectd-plugins']['df']['report_reserved'] = false
 node.default['collectd-plugins']['df']['FSType'] = %w(proc sysfs fusectl debugfs securityfs devtmpfs devpts tmpfs)
-node.default['collectd-plugins']['df']['ignore_selectd'] = true
+node.default['collectd-plugins']['df']['ignore_selected'] = true
 
 Chef::Log.info 'Setting UnixSock Plugin Options'
 node.default['collectd-plugins']['unixsock']['SocketFile'] = '/tmp/collectd.sock'
@@ -55,18 +92,17 @@ include_recipe 'collectd_plugins::interface'
 
 include_recipe 'collectd_plugins::disk'
 include_recipe 'collectd_plugins::processes'
-# include_recipe 'collectd_plugins::users'
 
 if ::File.exist?('/var/run/rightlink/secret')
   File.read('/var/run/rightlink/secret').each_line do |line|
     k, v = line.strip.split('=')
-    node.default['rs-base']['rightscale'][k] = v
+    node.default['rightscale'][k] = v
   end
 else
   raise 'rs-base needs rl10 secrets to operate'
-end
+end if node['rightscale']['RS_RLL_PORT'].nil?
 
-node.default['collectd-plugins']['write_http']['U_R_L'] = "http://127.0.0.1:#{node['rs-base']['rightscale']['RS_RLL_PORT']}/rll/tss/collectdv5"
+node.default['collectd-plugins']['write_http']['U_R_L'] = "http://127.0.0.1:#{node['rightscale']['RS_RLL_PORT']}/rll/tss/collectdv5"
 include_recipe 'collectd_plugins::write_http'
 include_recipe 'rightscale_tag::monitoring'
 
