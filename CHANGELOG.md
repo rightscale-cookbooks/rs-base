@@ -3,6 +3,10 @@ rs-base Cookbook CHANGELOG
 
 This file is used to list changes made in each version of the rs-base cookbook.
 
+v2.1.1
+------
+- updated collectd 2.2.4 as 2.2.2 has a broken path on CentOS7
+
 v2.1.0
 ------
 - adding selinux support for centos7 collectd
