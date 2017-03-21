@@ -24,7 +24,9 @@ platforms:
   driver_config:
     box: bento/centos-7.2
 - name: ubuntu-14.04
-  run_list: ['recipe[apt]','recipe[fake::create_secrets]']
+  run_list: 
+  - recipe[apt]
+  - recipe[fake::create_secrets]
   driver_config:
     box: bento/ubuntu-14.04
 - name: ubuntu-16.04
@@ -34,13 +36,15 @@ platforms:
 
 suites:
 - name: default
-  run_list: ['recipe[rs-base::default]']
+  run_list: 
+    - recipe[rs-base::default]
   attributes:
     cloud:
       provider: vagrant
     rightscale:
       RS_RLL_PORT: 12345
     rs-base:
+      collectd_hostname: 00-137FE058
       swap:
         size: 1
 - name: swap
