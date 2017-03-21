@@ -18,10 +18,6 @@
 # limitations under the License.
 #
 
-marker 'recipe_start_rightscale' do
-  template 'rightscale_audit_entry.erb'
-end
-
 if (node['platform_family'] == 'rhel') && (node['platform_version'].to_i >= 7)
   yum_repository 'epel' do
     baseurl 'https://dl.fedoraproject.org/pub/epel/7/x86_64/'

@@ -18,10 +18,6 @@
 # limitations under the License.
 #
 
-marker 'recipe_start_rightscale' do
-  template 'rightscale_audit_entry.erb'
-end
-
 node.override['ntp']['servers'] = node['rs-base']['ntp']['servers']
 
 include_recipe 'ntp::default'
