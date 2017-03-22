@@ -18,10 +18,6 @@
 # limitations under the License.
 #
 
-marker 'recipe_start_rightscale' do
-  template 'rightscale_audit_entry.erb'
-end
-
 include_recipe 'ephemeral_lvm::default'
 
 # Create base directory for swap file location

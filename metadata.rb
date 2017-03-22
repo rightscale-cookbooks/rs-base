@@ -5,7 +5,7 @@ maintainer_email 'cookbooks@rightscale.com'
 license          'Apache 2.0'
 description      'Installs/Configures rs-base'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '2.1.0'
+version          '2.1.1'
 issues_url       'https://github.com/rightscale-cookbooks/rs-base/issues' if respond_to?(:issues_url)
 source_url       'https://github.com/rightscale-cookbooks/rs-base' if respond_to?(:source_url)
 chef_version     '>= 12.0' if respond_to?(:chef_version)
@@ -16,14 +16,13 @@ supports 'ubuntu'
 depends 'apt'
 depends 'yum-epel'
 depends 'ntp'
-depends 'marker'
 depends 'rightscale_tag', '~> 2.0'
 depends 'machine_tag', '~> 2.0'
 depends 'swap', '>= 2.0'
 depends 'rsyslog'
-depends 'collectd', '= 2.2.2'
-depends 'collectd_plugins', '= 2.1.3'
-depends 'ephemeral_lvm', '~> 3.0'
+depends 'collectd', '>= 2.2'
+depends 'collectd_plugins', '>= 2.1'
+depends 'ephemeral_lvm', '>= 3.0'
 depends 'selinux_policy'
 depends 'sysctl'
 

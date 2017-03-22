@@ -18,10 +18,6 @@
 # limitations under the License.
 #
 
-marker 'recipe_start_rightscale' do
-  template 'rightscale_audit_entry.erb'
-end
-
 if node['rs-base']['rsyslog_server'].nil?
   # Install basic rsyslog software and configure for local logging only.
   include_recipe 'rsyslog::default'
