@@ -17,23 +17,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-include_recipe 'ephemeral_lvm::default'
-
-# Create base directory for swap file location
-dir = ::File.dirname(node['rs-base']['swap']['file'])
-directory dir do
-  owner 'root'
-  group 'root'
-  mode 00755
-  recursive true
-  action :create
-end
-
 # The swap cookbook expects the size to be in MB.
 size_mb = node['rs-base']['swap']['size'].to_i
 
-swap_file node['rs-base']['swap']['file'] do
-  size size_mb
-  action :create
+if size_mb > 0
+
+  include_recipe 'ephemeral_lvm::default'
+
+  # Create base directory for swap file location
+  dir = ::File.dirname(node['rs-base']['swap']['file'])
+  directory dir do
+    owner 'root'
+    group 'root'
+    mode 00755
+    recursive true
+    action :create
+  end
+
+  swap_file node['rs-base']['swap']['file'] do
+    size size_mb
+    action :create
+  end
+
 end
