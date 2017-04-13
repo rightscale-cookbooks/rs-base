@@ -39,11 +39,8 @@ end
 def platforms?
   platforms = {
     'ubuntu' => ['14.04', '16.04'],
-    'debian' => ['7.0', '7.4'],
-    'fedora' => %w(18 23),
-    'redhat' => ['6.5', '7.0'],
-    'centos' => ['6.5', '7.0'],
-    'suse' => ['11.2', '12.0'],
+    'centos' => ['6.8', '7.0'],
+    'suse' => ['11.4', '12.2'],
   }
   platforms
 end
