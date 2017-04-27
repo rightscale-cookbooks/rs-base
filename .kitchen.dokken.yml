@@ -1,7 +1,7 @@
 driver:
   name: dokken
   privileged: true # because Docker and SystemD/Upstart
-  chef_version: current
+  chef_version: 12.16.42
   volumes: [ '/mnt' ]
 
 transport:
@@ -88,3 +88,6 @@ platforms:
       pid_one_command: /bin/systemd
       intermediate_instructions:
         - RUN zypper --non-interactive install aaa_base perl-Getopt-Long-Descriptive which hostname
+    attributes:
+      poise-service:
+        provider: systemd
