@@ -3,6 +3,10 @@ rs-base Cookbook CHANGELOG
 
 This file is used to list changes made in each version of the rs-base cookbook.
 
+v2.1.3
+------
+- reverting to straight yum-epel as dl.fedoraproject.org had outage
+
 v2.1.2
 ------
 - doesn't create swap if size = 0
