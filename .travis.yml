@@ -48,3 +48,5 @@ matrix:
 notifications:
   slack:
     secure: FECIJq2s1oCyRiuuQgisiWsKXx5g2WpFxfO3gPCDrzjHbLbdPBFZRd/O5oI/ugWK19hOcAFe2CuSrsE485mmXutL/mQiDehZ1S3++iIsAPYZdnWISEl4IiKJmGrRPqAE4maG8TiBMEV6gt3YPvteWhtmJxE4LEJoXS9r98zA3qA=
+    on_success: change
+    on_failure: always
